@@ -1,0 +1,38 @@
+
+{% extends 'buddies/base.html' %}
+
+
+
+{% block content %}
+
+    <h2>Sign Up!</h2>
+
+    <form method="post" action="{% url 'accounts:signup' %}">
+        {% csrf_token %}
+        <table>
+        <tr>
+            <td>First Name</td>
+            <td><input name="first_name"/></td>
+        </tr>
+        <tr>
+            <td>Username</td>
+            <td><input name="username"/></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" name="password"></td>
+        </tr>
+
+        <tr>
+            <td>Password Again</td>
+            <td><input type="password" name="password2"></td>
+        </tr>
+        </table>
+
+        <input type="submit" value="Signup">
+    </form>
+
+    <p><a href="{% url 'login' %}">Already Have an Account? Login.</a></p>
+
+{% endblock content %}
+
