@@ -40,7 +40,7 @@ SECRET_KEY = '0!&r7tm^k9&3ta$7e1cq0qlg68)jw(=oue@p_vzs%*w4f3owas'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'https://better-world-buddies.herokuapp.com/',
+    'better-world-buddies.herokuapp.com',
     'localhost',
     '127.0.0.1'
 ]
