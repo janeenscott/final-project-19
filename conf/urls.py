@@ -18,13 +18,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
+from django.views.generic.base import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('accounts.urls')),
+    path('', include('users.urls')),
+    path('users/', include('django.contrib.auth.urls')),
+    path('', TemplateView.as_view(template_name='buddies/index.html')),
     path('', include('buddies.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
-    # path('logout/', admin.site.urls)      maybe??
 ]
 
 

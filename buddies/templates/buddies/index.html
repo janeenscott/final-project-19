@@ -2,8 +2,20 @@
 
 {% block content %}
 
-    <h1>Woke Buddies</h1>
+    <h2>{% block title %}Make Woke Buddies{% endblock title %}</h2>
 
+    {% if user.is_authenticated %}
+
+        <h3>Hi {{ user.username }}!</h3>
+        <p><a href="{% url 'logout' %}">Log Out</a></p>
+
+    {% else %}
+
+        <p>Welcome to Better World Buddies! Please log in.</p>
+        <a href="{% url 'users:login' %}">Login</a>
+        <a href="{% url 'users:signup' %}">Or create an account</a>
+
+    {% endif %}
 
 
 {% endblock content %}

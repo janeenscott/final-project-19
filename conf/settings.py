@@ -55,10 +55,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts',
+
+    'phone_field',
+    'rest_framework',
+    'localflavor',
+
+    'users',
     'api',
     'buddies',
-    'frontend'
+    'frontend',
+
+    # 'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -79,6 +86,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
+        # 'DIRS': [os.path.join(BASE_DIR, 'users/templates',)],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -103,8 +111,8 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'buddy',
-            'USER': 'buddy',
+            'NAME': 'buddies',
+            'USER': 'buddies',
             'PASSWORD': 'safepass',
             'HOST': 'localhost',
             'PORT': '5432',
@@ -144,3 +152,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
+
+AUTH_USER_MODEL = 'users.CustomUser'
+
+# May need these redirects for custom user model
+# LOGIN_REDIRECT_URL = 'index'
+#
+# LOGOUT_REDIRECT_URL = 'index'

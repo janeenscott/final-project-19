@@ -11,6 +11,10 @@ psycopg2 = "*"
 gunicorn = "*"
 whitenoise = "*"
 dj-database-url = "*"
+djangorestframework = "*"
+django-phone-field = "*"
+django-localflavor = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.7"
