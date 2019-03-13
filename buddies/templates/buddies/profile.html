@@ -3,7 +3,19 @@
 {% block title %}Profile{% endblock title %}
 
 {% block content %}
-    <h2>Hi {{ user.username }}!</h2>
+    <h2>Hi {{ user.first_name }}!</h2>
 
-{#    <p>{{ user.email }}</p>#}
+    <h3>User Profile</h3>
+
+    <p>First Name: {{ user.first_name }}</p>
+    <p>Username: {{ user.username }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Phone: {{ user.phone_number }}</p>
+    <p>Zipcode: {{ user.zipcode }}</p>
+    <p>City: {{ user.city }}</p>
+    <p>State: {{ user.state }}</p>
+    <p>Age: {{ user.age }}</p>
+    <p>Image: {{ user.image.url }}</p>
+
+
 {% endblock content %}

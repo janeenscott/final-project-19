@@ -40,6 +40,14 @@ SECRET_KEY = '0!&r7tm^k9&3ta$7e1cq0qlg68)jw(=oue@p_vzs%*w4f3owas'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+########## MEDIA CONFIGURATION
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#media-root
+MEDIA_ROOT = os.path.normpath(os.path.join(BASE_DIR, 'media'))
+
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#media-url
+MEDIA_URL = '/media/'
+########## END MEDIA CONFIGURATION
+
 ALLOWED_HOSTS = [
     'better-world-buddies.herokuapp.com',
     'localhost',

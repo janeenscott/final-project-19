@@ -6,47 +6,51 @@
 {% block content %}
 
     <h2>Sign Up!</h2>
-    <form method="post" action={% url 'users:signup' %}>
+    <form enctype="multipart/form-data" id="signup-form" method="post" action={% url 'users:signup' %}>
     {% csrf_token %}
-         <table>
-        <tr>
-            <td>First Name</td>
-            <td><input name="first_name"/></td>
-        </tr>
-        <tr>
-            <td>Username</td>
-            <td><input name="username"/></td>
-        </tr>
-        <tr>
-            <td>Password</td>
-            <td><input type="password" name="password"></td>
-        </tr>
 
-        <tr>
-            <td>Password Again</td>
-            <td><input type="password" name="password2"></td>
-        </tr>
-              <tr>
-            <td>Email</td>
-            <td><input name="email"/></td>
-        </tr>
-        <tr>
-            <td>City</td>
-            <td><input name="city"/></td>
-        </tr>
-        <tr>
-            <td>Age</td>
-            <td><input name="age"></td>
-        </tr>
+        {{ form.as_p }}
 
-        <tr>
-            <td>Profile Picture</td>
-            <td><input type="image" name="image"></td>
-        </tr>
-        </table>
 
-        <input type="submit" value="Signup">
-
+{#         <table>#}
+{#        <tr>#}
+{#            <td>First Name</td>#}
+{#            <td><input name="first_name"/></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>Username</td>#}
+{#            <td><input name="username"/></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>Password</td>#}
+{#            <td><input type="password" name="password"></td>#}
+{#        </tr>#}
+{##}
+{#        <tr>#}
+{#            <td>Password Again</td>#}
+{#            <td><input type="password" name="password2"></td>#}
+{#        </tr>#}
+{#              <tr>#}
+{#            <td>Email</td>#}
+{#            <td><input name="email"/></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>City</td>#}
+{#            <td><input name="city"/></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>Age</td>#}
+{#            <td><input name="age"></td>#}
+{#        </tr>#}
+{##}
+{#        <tr>#}
+{#            <td>Profile Picture</td>#}
+{#            <td><input type="image" name="image"></td>#}
+{#        </tr>#}
+{#        </table>#}
+{##}
+{#        <input type="submit" value="Signup">#}
+{##}
 
     </form>
 
