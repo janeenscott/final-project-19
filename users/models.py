@@ -21,7 +21,7 @@ class CustomUser(AbstractUser):
     )
 
 
-    # first_name = models.CharField(max_length=50, null=True)
+    first_name = models.CharField(max_length=50, null=True)
     # last_name = models.CharField(max_length=50, null=True)
     # username = models.CharField(max_length=50, null=True)
     email = models.EmailField(

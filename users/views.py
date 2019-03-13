@@ -26,6 +26,14 @@ class SignupView(TemplateView):
         password = self.request.POST.get('password')
         password2 = self.request.POST.get('password2')
 
+        email = self.request.POST.get('email')
+        phone_number = self.request.POST.get('phone_number')
+        zipcode = self.request.POST.get('zipcode')
+        city = self.request.POST.get('city')
+        state = self.request.POST.get('state')
+        age = self.request.POST.get('age')
+        image = self.request.POST.get('image')
+
         if password != password2:
             return HttpResponseRedirect(reverse('users:signup'))
         if password != password2:
@@ -37,7 +45,7 @@ class SignupView(TemplateView):
             return HttpResponseRedirect(reverse('users:signup'))
 
         # save user database record using fancy hashing on password
-        CustomUser.objects.create_user(username=username, password=password)
+        CustomUser.objects.create_user(first_name=first_name, username=username, password=password, email=email, phone_number=phone_number, zipcode=zipcode, city=city, state=state, age=age, image=image)
 
         # Authenticate the user checks provided password against the hash
         user = authenticate(username=username, password=password)
