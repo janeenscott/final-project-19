@@ -34,5 +34,9 @@ class CustomUser(AbstractUser):
     city = models.CharField(max_length=100, choices=CITY_CHOICES, default='ALBUQUERQUE', null=True)
     state = USStateField(null=True)
     age = models.CharField(max_length=2, null=True)
-    image = models.ImageField(null=True)
+    image = models.ImageField(null=True, upload_to='media/', default='static/images/placeholder.jpg')
+
+    def __str__(self):
+        return self.username
+
 

@@ -11,7 +11,7 @@
 
         {{ form.as_p }}
 
-
+{##}
 {#         <table>#}
 {#        <tr>#}
 {#            <td>First Name</td>#}
@@ -36,6 +36,23 @@
 {#        </tr>#}
 {#        <tr>#}
 {#            <td>City</td>#}
+{#            <td><select id="city-select" name="city">Your City#}
+{##}
+{#            <option value="asheville">Asheville</option>#}
+{#            <option value="atlanta">Atlanta</option>#}
+{#            <option value="birmingham_al">Birmingham</option>#}
+{#            <option value="boise">Boise</option>#}
+{#            <option value="charlotte">Charlotte</option>#}
+{#            <option value="charleston">Charleston</option>#}
+{#            <option value="chicago">Chicago</option>#}
+{#            <option value="miami">Miami</option>#}
+{#            <option value="minn-st-paul">Minneapolis</option>#}
+{#            <option value="new-york">New York</option>#}
+{#            <option value="omaha">Omaha</option>#}
+{#            <option value="tampa-bay">Tampa Bay</option>#}
+{##}
+{##}
+{#            </select></td>#}
 {#            <td><input name="city"/></td>#}
 {#        </tr>#}
 {#        <tr>#}
@@ -45,12 +62,12 @@
 {##}
 {#        <tr>#}
 {#            <td>Profile Picture</td>#}
-{#            <td><input type="image" name="image"></td>#}
+{#            <td><input id='profile-pic' type="file" name="image"></td>#}
 {#        </tr>#}
 {#        </table>#}
-{##}
-{#        <input type="submit" value="Signup">#}
-{##}
+
+        <input type="submit" value="Signup">
+
 
     </form>
 

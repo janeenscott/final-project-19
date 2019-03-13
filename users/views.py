@@ -10,11 +10,16 @@ from .forms import CustomUserCreationForm
 
 
 class SignupView(CreateView):
+
+    # **** IF USING THIS CODE, CHANGE TO CREATEVIEW *****
     model = CustomUser
-    form_class = CustomUserCreationForm
+    fields = ('first_name', 'last_name', 'password', 'password', 'email', 'username', 'city', 'image')
+    # form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
     template_name = 'users/signup.html'
 
+
+    # ******** IF USING THIS CODE, CHANGE TO TEMPLATEVIEW *****
     # template_name = 'users/signup.html'
     #
     # def post(self, request, *args, **kwargs):
@@ -34,6 +39,8 @@ class SignupView(CreateView):
     #     state = self.request.POST.get('state')
     #     age = self.request.POST.get('age')
     #     image = self.request.POST.get('image')
+    #
+    #     print(self.request)
     #
     #     if password != password2:
     #         return HttpResponseRedirect(reverse('users:signup'))
@@ -55,7 +62,7 @@ class SignupView(CreateView):
     #     login(self.request, user)
     #
     #     return HttpResponseRedirect(reverse('buddies:index'))
-    #
+
 
 class LoginView(TemplateView):
     template_name = 'users/login.html'
