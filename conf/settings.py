@@ -156,6 +156,6 @@ USE_TZ = True
 AUTH_USER_MODEL = 'users.CustomUser'
 
 # May need these redirects for custom user model
-# LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = '/'
 #
-# LOGOUT_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = '/'

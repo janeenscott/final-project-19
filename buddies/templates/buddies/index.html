@@ -6,6 +6,8 @@
 
     {% if user.is_authenticated %}
 
+{#why does username work here but first_name does not?#}
+
         <h3>Hi {{ user.username }}!</h3>
         <p><a href="{% url 'logout' %}">Log Out</a></p>
 
