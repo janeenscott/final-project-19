@@ -33,6 +33,8 @@ class CustomUser(AbstractUser):
     state = USStateField(null=True)
     age = models.CharField(max_length=2, null=True)
     image = models.ImageField(null=True, upload_to='media/', default='static/images/placeholder.jpg')
+    buddy = models.ForeignKey('users.CustomUser', null=True, blank=True, on_delete=models.SET_NULL)
+    rating = models.DecimalField(decimal_places=5, max_digits=7)
 
     def __str__(self):
         return self.username

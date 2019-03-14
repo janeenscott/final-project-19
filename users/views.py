@@ -17,6 +17,15 @@ class SignupView(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('buddies:profile')
     template_name = 'users/signup.html'
+
+#******** UNCOMMENT ONCE MODEL IS PULLING IN FROM FOREIGN KEYS ******
+    # def form_valid(self, form):
+    #     obj = form.save(commit=False)
+    #     obj.buddy = self.request.buddy
+    #     obj.rating = self.request.rating
+    #     obj.save()
+    #     return HttpResponseRedirect(self.success_url())
+
     # WITH FORM_CLASS, SUCCESS_URL, AND TEAMPLATE_URL ONLY, DATA POSTING TO DATABASE
 
     #
