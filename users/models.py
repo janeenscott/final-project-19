@@ -7,14 +7,14 @@ from localflavor.us.models import USStateField
 
 class CustomUser(AbstractUser):
     CITY_CHOICES = (
-        ('albuquerque', 'ALBUQUERQUE'),
-        ('anchorage', 'ANCHORAGE'),
-        ('asheville', 'ASHEVILLE'),
-        ('atlanta', 'ATLANTA'),
-        ('austin', 'AUSTIN'),
-        ('baltimore', 'BALTIMORE'),
-        ('birmingham_al', 'BIRMINGHAM_AL'),
-        ('boise', 'BOISE')
+        ('Albuquerque', 'Albuquerque'),
+        ('Anchorage', 'Anchorage'),
+        ('Asheville', 'Asheville'),
+        ('Atlanta', 'Atlanta'),
+        ('Austin', 'Austin'),
+        ('Baltimore', 'Baltimore'),
+        ('Birmingham, AL', 'Birmingham, AL'),
+        ('Boise', 'Boise')
     )
 
     first_name = models.CharField(max_length=50, null=True)

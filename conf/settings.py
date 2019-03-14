@@ -54,6 +54,21 @@ ALLOWED_HOSTS = [
     '127.0.0.1'
 ]
 
+
+# UPLOADED FILE CONFIGURATION
+
+# See: https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
+
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# DO NOT COMMIT TO VERSION CONTROL WITH THESE KEYS VISIBLE
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+AWS_STORAGE_BUCKET_NAME = 'finalproject19'
+AWS_S3_FILE_OVERWRITE = False  # set to true by default which allows files with same name to overwrite each other
+AWS_DEFAULT_ACL = None  # default will be to lock down everything
+# AWS_QUERYSTRING_AUTH
+#
 # Application definition
 
 INSTALLED_APPS = [
@@ -67,6 +82,7 @@ INSTALLED_APPS = [
     'phone_field',
     'rest_framework',
     'localflavor',
+    'storages',
 
     'users',
     'api',

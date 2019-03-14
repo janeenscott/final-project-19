@@ -15,6 +15,9 @@ djangorestframework = "*"
 django-phone-field = "*"
 django-localflavor = "*"
 pillow = "*"
+boto3 = "*"
+django-storages = "*"
+requests = "*"
 
 [requires]
 python_version = "3.7"

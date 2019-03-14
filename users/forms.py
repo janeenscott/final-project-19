@@ -9,7 +9,7 @@ class CustomUserCreationForm(UserCreationForm):
     # deleted (UserCreationForm) from after Meta. Might need that again?
     class Meta:
         model = CustomUser
-        fields = UserCreationForm.Meta.fields + ('first_name', 'last_name', 'city', 'age', 'image')
+        fields = UserCreationForm.Meta.fields + ('image', 'first_name', 'last_name', 'city', 'age')
         # widgets = {
         #     'password': forms.PasswordInput(),
         # }
