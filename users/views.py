@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView
-from django.contrib.auth import get_user_model, login, authenticate
+from django.contrib.auth import login, authenticate
 from .models import CustomUser
 from django.views.generic import CreateView
 
@@ -12,12 +12,23 @@ from .forms import CustomUserCreationForm
 class SignupView(CreateView):
 
     # **** IF USING THIS CODE, CHANGE TO CREATEVIEW *****
-    model = CustomUser
-    fields = ('first_name', 'last_name', 'password', 'password', 'email', 'username', 'city', 'image')
-    # form_class = CustomUserCreationForm
-    success_url = reverse_lazy('login')
+    # model = CustomUser
+    # fields = ('first_name', 'username', 'password', 'email', 'city', 'image')
+    form_class = CustomUserCreationForm
+    success_url = reverse_lazy('buddies:profile')
     template_name = 'users/signup.html'
+    # WITH FORM_CLASS, SUCCESS_URL, AND TEAMPLATE_URL ONLY, DATA POSTING TO DATABASE
 
+    #
+    # def form_valid(self, form):
+    #     username = form.cleaned_data['username']
+    #     password = form.cleaned_data['password']
+    #     user = authenticate(username=username, password=password)
+    #     # if user is not None:
+    #     #     if user.is_active:
+    #     #         login(request, user)
+    #     #         reverse_lazy(success_url)
+    #     return HttpResponseRedirect(reverse('buddies:index'))
 
     # ******** IF USING THIS CODE, CHANGE TO TEMPLATEVIEW *****
     # template_name = 'users/signup.html'
@@ -74,6 +85,6 @@ class LoginView(TemplateView):
         if user is not None:
             login(request, user)
         else:
-            return HttpResponseRedirect(reverse('users:index'))
+            return HttpResponseRedirect(reverse('buddies:profile'))
 
 

@@ -10,6 +10,9 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = CustomUser
         fields = UserCreationForm.Meta.fields + ('first_name', 'last_name', 'city', 'age', 'image')
+        # widgets = {
+        #     'password': forms.PasswordInput(),
+        # }
 
 
 class CustomUserChangeForm(UserChangeForm):

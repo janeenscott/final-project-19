@@ -1,11 +1,8 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django import forms
 from phone_field import PhoneField
 from localflavor.us.models import USStateField
-
-
-
-
 
 
 class CustomUser(AbstractUser):
@@ -20,14 +17,15 @@ class CustomUser(AbstractUser):
         ('boise', 'BOISE')
     )
 
-
     first_name = models.CharField(max_length=50, null=True)
+    # password = models.CharField(max_length=15, widget=forms.PasswordInput)
     # last_name = models.CharField(max_length=50, null=True)
     # username = models.CharField(max_length=50, null=True)
     email = models.EmailField(
         verbose_name='email address',
         max_length=255,
-        unique=True,
+        # unique=True,
+        null=True
     )
     phone_number = PhoneField(blank=True, help_text='Contact phone number')
     zipcode = models.IntegerField(null=True)
