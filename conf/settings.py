@@ -59,7 +59,7 @@ ALLOWED_HOSTS = [
 
 # See: https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
 
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # DO NOT COMMIT TO VERSION CONTROL WITH THESE KEYS VISIBLE
 AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
