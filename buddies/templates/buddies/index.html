@@ -8,7 +8,7 @@
 
 {#why does username work here but first_name does not?#}
 
-        <h3>Hi {{ user.username }}!</h3>
+        <h3>Hi {{ user.first_name }}!</h3>
         <p><a href="{% url 'logout' %}">Log Out</a></p>
 
     {% else %}

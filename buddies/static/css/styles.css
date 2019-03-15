@@ -2,6 +2,10 @@ img{
     max-width: 200px;
 }
 
-li{
+.nav{
     display: inline;
+}
+
+.topic{
+    display: block;
 }
