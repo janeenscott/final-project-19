@@ -10,6 +10,7 @@
 
 # production
 /build
+# COMMENT OUT AFTER NPM RUN BUILD
 
 # misc
 .DS_Store

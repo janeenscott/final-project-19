@@ -1,6 +1,19 @@
 import React, {Component} from 'react';
+import '../container/App.css';
 
 class ChatMessages extends Component {
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         messages:  [
+    //             {messageText: '', sender: '', timeSent: ''},
+    //             ]
+    //     }
+    // }
+    // getMessage = (message) => {
+    //
+    // }
+
     render() {
         return (
             <ul className='message-list'>
@@ -16,6 +29,7 @@ class ChatMessages extends Component {
                             <div>
                                 {message.timeSent}
                             </div>
+                            <br/>
                         </li>
                     )
                 })
