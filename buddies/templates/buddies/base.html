@@ -19,12 +19,15 @@
         </li>
         <!-- write if/else statement to switch login and logout
          depending on user authentication status-->
-         <li>
-            <a href="{% url 'login' %}">Login</a>
-        </li>
+        {% if request.user.is_authenticated %}
          <li>
             <a href="{% url 'logout' %}">Logout</a>
         </li>
+            {% else %}
+        <li>
+            <a href="{% url 'login' %}">Login</a>
+        </li>
+        {% endif %}
          <li>
             <a href="{% url 'buddies:profile' %}">Profile</a>
         </li>

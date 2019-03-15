@@ -1,10 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView
 from django.contrib.auth import login, authenticate
 from .models import CustomUser
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView
 import requests
 
 from .forms import CustomUserCreationForm
@@ -24,6 +24,7 @@ class SignupView(CreateView):
         # self.object is the form data, queued here, but not saved
         self.object.rating = self.get_quality_rating()
         self.object.save()
+        # login(self.request, CustomUser)
         return HttpResponseRedirect(self.get_success_url())
 
     def get_quality_rating(self):
@@ -66,6 +67,19 @@ class SignupView(CreateView):
     #     obj.save()
     #     return HttpResponseRedirect(self.success_url())
 
+
+# class UpdtateProfileView(UpdateView):
+#
+#     model = CustomUser
+#     form_class = CustomUserCreationForm
+#     context_object_name = 'profile'
+#     # queryset =
+#
+#     # def form_valid(self, form):
+#     #     profile = form.save(commit=False)
+#     #     profile.updated_by = self.request.user
+#     #     profile.save()
+#     #     return redirect('buddies:profile')
 
 
 
