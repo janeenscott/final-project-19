@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import ChatMessages from  '../component/ChatMessages'
 import ChatInput from  '../component/ChatInput'
+import moment from 'moment'
 
 
 
@@ -9,6 +10,7 @@ class App extends Component {
     constructor(props){
         super(props);
         this.state = {
+            currentUser: '',
             messages: [
                 {messageText: 'Heyyyy', sender: 'Janeen', timeSent: '12:01pm'},
                 {messageText: "What's up?", sender: 'Kelsey', timeSent: '12:02pm'},
@@ -18,13 +20,17 @@ class App extends Component {
         };
         this.sendMessage = this.sendMessage.bind(this)
     }
-    sendMessage(){
-        // this.messages.sender.sendMessage({
-        //     // text
-        // })
-        console.log('this: ', this.state.messages[0]);
+    sendMessage = (message) =>{
+        const messages = this.state.messages;
+        messages.push({
+            messageText: message,
+            sender: this.state.currentUser,
+            timeSent: moment(message['date']).format('MMMM Do, h:mm a')
+        });
+        this.setState({messages: messages})
+        // console.log('this: ', this.state.messages[0]);
 
-    }
+    };
 
 
   render() {
