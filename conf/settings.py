@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-import psycopg2
+# import psycopg2
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -114,8 +114,8 @@ ROOT_URLCONF = 'conf.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        # 'DIRS': [os.path.join(BASE_DIR, 'users/templates',)],
+        # 'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'users/templates',)],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -185,6 +185,6 @@ USE_TZ = True
 AUTH_USER_MODEL = 'users.CustomUser'
 
 # May need these redirects for custom user model
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/profile/'
 #
 LOGOUT_REDIRECT_URL = '/'
