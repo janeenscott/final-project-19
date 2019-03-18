@@ -1,8 +1,12 @@
 {% extends 'buddies/base.html' %}
 
-{% block title %}Profile{% endblock title %}
 
 {% block content %}
+
+    {% block title %}Profile{% endblock title %}
+
+    {% if user.is_authenticated %}
+
     <h2>Hi {{ user.first_name }}!</h2>
 
     <h3>User Profile</h3>
@@ -20,6 +24,13 @@
     <h4>Your Pen Pal is: </h4>
     <br>
     <h4>Facts about your buddy's home:</h4>
+
+    {% else %}
+
+    <h2>Please <a href="{% url 'users:login' %}">login</a>
+  to see this page</h2>
+
+    {% endif %}
 
 
 {#<div class="mt-3">#}
