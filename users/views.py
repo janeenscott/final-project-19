@@ -12,9 +12,7 @@ from .forms import CustomUserCreationForm
 
 class SignupView(CreateView):
 
-    # **** IF USING THIS CODE, CHANGE TO CREATEVIEW *****
     model = CustomUser
-    # fields = ('first_name', 'username', 'password', 'email', 'city', 'image')
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('buddies:profile')
     template_name = 'users/signup.html'
@@ -24,7 +22,7 @@ class SignupView(CreateView):
         # self.object is the form data, queued here, but not saved
         self.object.rating = self.get_quality_rating()
         self.object.save()
-        # login(self.request, CustomUser)
+        login(self.request, self.object)
         return HttpResponseRedirect(self.get_success_url())
 
     def get_quality_rating(self):
@@ -57,7 +55,19 @@ class SignupView(CreateView):
 
         return score
 
-                # self.object.rating = quality_data['teleport_city_score']
+        # def register(request):
+        #     if request.method == 'POST':
+        #         form = CustomUserCreationForm(request.POST)
+        #         if form.is_valid():
+        #             new_user = form.save()
+        #             messages.info(request, "Thanks for registering. You are now logged in.")
+        #             new_user = authenticate(username=form.cleaned_data['username'],
+        #                                     password=form.cleaned_data['password1'],
+        #                                     )
+        #             login(request, new_user)
+        #             return HttpResponseRedirect("/profile/")
+        #
+        #         # self.object.rating = quality_data['teleport_city_score']
 
 #******** UNCOMMENT ONCE MODEL IS PULLING IN FROM FOREIGN KEYS ******
     # def form_valid(self, form):

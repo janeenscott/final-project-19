@@ -188,3 +188,5 @@ AUTH_USER_MODEL = 'users.CustomUser'
 LOGIN_REDIRECT_URL = '/profile/'
 #
 LOGOUT_REDIRECT_URL = '/'
+
+LOGIN_URL = '/login/'
