@@ -27,7 +27,8 @@ urlpatterns = [
     path('users/', include('django.contrib.auth.urls')),
     path('', TemplateView.as_view(template_name='buddies/index.html')),
     path('', include('buddies.urls')),
-    path('', include('api.urls'))
+    path('', include('api.urls')),
+    path('', include('frontend.urls'))
 ]
 
 

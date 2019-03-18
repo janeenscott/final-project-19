@@ -19,7 +19,7 @@ class ChatMessages extends Component {
                     return (
                         <li key={message.id}>
                             <div>
-                                {message.sender}
+                                {message.sender['first_name']}
                             </div>
                             <div>
                                 {message.messageText}
