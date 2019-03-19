@@ -1,28 +1,42 @@
 import React, {Component} from 'react';
 import '../container/App.css';
+import { EditorState, convertFromRaw, convertToRaw } from 'draft-js';
+import {Editor} from 'react-draft-wysiwyg'
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+
 
 class ChatInput extends Component{
     constructor(props){
         super(props);
         this.state = {
-            messageText: ''
+            messageText: '',
+            editorState: EditorState.createEmpty()
         };
-        this.handleChange = this.handleChange.bind(this);
+        // this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 
     }
 
-    handleChange(event){
+    // handleChange(event){
+    //     this.setState({
+    //         [event.target.name]: event.target.value
+    //     })
+    // }
+
+    onEditorStateChange = (editorState) => {
         this.setState({
-            messageText: event.target.value
-        })
-    }
+            editorState,
+        });
+    };
 
     handleSubmit(event){
         event.preventDefault();
-        this.props.sendMessage(this.state.messageText);
+        convertToRaw(this.state.editorState.getCurrentContent());
+        this.props.sendMessage(this.state.editorState);
         this.setState({
-            messageText: ''
+            editorState: EditorState.createEmpty()
+
+            // messageText: ''
         })
     }
 
@@ -32,14 +46,22 @@ class ChatInput extends Component{
              className='message-input-form'
              onSubmit={this.handleSubmit}
          >
-             <textarea
-                 cols={40}
-                 rows={10}
-                 name='messageText'
-                 onChange={this.handleChange}
-                 value={this.state.messageText}
-                 placeholder='Type your message here'
-             />
+
+               <Editor
+                editorState={this.state.editorState}
+                toolbarClassName="toolbarClassName"
+                wrapperClassName="wrapperClassName"
+                editorClassName="editorClassName"
+                onEditorStateChange={this.onEditorStateChange}
+            />
+             {/*<textarea*/}
+                 {/*cols={40}*/}
+                 {/*rows={10}*/}
+                 {/*name='messageText'*/}
+                 {/*onChange={this.handleChange}*/}
+                 {/*value={this.state.messageText}*/}
+                 {/*placeholder='Type your message here'*/}
+             {/*/>*/}
               <button type="submit" className="btn btn-primary">
                         Send
                     </button>

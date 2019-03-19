@@ -20,3 +20,5 @@ class MessageCreateView(LoginRequiredMixin, generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(sender=self.request.user)
 # sender gets automatically set to the user that is making the request (the logged in user)
+#add date time_sent=self.request.something...
+

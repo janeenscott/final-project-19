@@ -31,9 +31,9 @@ STATICFILES_FINDERS = [
 ]
 
 # ********* UNCOMMENT AFTER NPM RUN BUILD *********
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'frontend/static/build/static'),
-# )
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'frontend/static/build/static'),
+)
 # ======== END STATIC FILE CONFIGURATION
 
 # Quick-start development settings - unsuitable for production

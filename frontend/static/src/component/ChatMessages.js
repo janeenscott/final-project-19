@@ -1,5 +1,11 @@
 import React, {Component} from 'react';
 import '../container/App.css';
+import {stateToHTML} from 'draft-js-export-html';
+import { convertFromRaw } from 'draft-js';
+
+
+import moment from 'moment'
+
 
 class ChatMessages extends Component {
     constructor(props) {
@@ -9,8 +15,17 @@ class ChatMessages extends Component {
             //     {messageText: '', sender: '', timeSent: ''},
             //     ]
         }
+
     }
 
+   convertMessageFromJSONToText = (text) => {
+        try {
+            var x = stateToHTML(convertFromRaw(JSON.parse(text)));
+        }catch (e) {
+            var x = text;
+        }
+        return x
+    };
 
     render() {
         return (
@@ -21,11 +36,11 @@ class ChatMessages extends Component {
                             <div>
                                 {message.sender['first_name']}
                             </div>
+                                <div
+                                    dangerouslySetInnerHTML={{__html: this.convertMessageFromJSONToText(message['message_text'])}}>
+                                </div>
                             <div>
-                                {message.messageText}
-                            </div>
-                            <div>
-                                {message.timeSent}
+                                {message['time_sent']}
                             </div>
                             <br/>
                         </li>
