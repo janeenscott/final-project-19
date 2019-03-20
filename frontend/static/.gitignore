@@ -9,8 +9,7 @@
 /coverage
 
 # production
-/build
-# COMMENT OUT AFTER NPM RUN BUILD
+# /build
 
 # misc
 .DS_Store

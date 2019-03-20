@@ -42,6 +42,7 @@ class ChatMessages extends Component {
                             <div>
                                 {message['time_sent']}
                             </div>
+
                             <br/>
                         </li>
                     )
