@@ -55,20 +55,6 @@ class SignupView(CreateView):
 
         return score
 
-        # def register(request):
-        #     if request.method == 'POST':
-        #         form = CustomUserCreationForm(request.POST)
-        #         if form.is_valid():
-        #             new_user = form.save()
-        #             messages.info(request, "Thanks for registering. You are now logged in.")
-        #             new_user = authenticate(username=form.cleaned_data['username'],
-        #                                     password=form.cleaned_data['password1'],
-        #                                     )
-        #             login(request, new_user)
-        #             return HttpResponseRedirect("/profile/")
-        #
-        #         # self.object.rating = quality_data['teleport_city_score']
-
 #******** UNCOMMENT ONCE MODEL IS PULLING IN FROM FOREIGN KEYS ******
     # def form_valid(self, form):
     #     obj = form.save(commit=False)
