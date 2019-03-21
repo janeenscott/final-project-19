@@ -29,10 +29,10 @@ class App extends Component {
         var body = {
             message_text: convertToRaw(editorState.getCurrentContent())
         };
-        console.log('body ', body);
-        console.log(editorState);
+        console.log('body: ', body);
+        console.log('editorState: ', editorState);
 
-        fetch('api/message/', {
+        fetch('/api/message/', {
             method: "POST",
             body: JSON.stringify(body),
             headers: {
@@ -50,7 +50,7 @@ class App extends Component {
 
             this.setState({messages: messages})
 
-            console.log('this: ', this.state.messages[0]);
+            console.log('this: ', this.state.messages[messages.length-1]);
         });
 
 
