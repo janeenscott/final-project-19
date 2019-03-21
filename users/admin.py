@@ -15,6 +15,8 @@ def pair_buddies(self, request, queryset):
             buddy__isnull=True,
         ).filter(
             Q(rating__gt=user.rating + 5) | Q(rating__lt=user.rating - 5)
+        ).filter(
+            Q(age__gt=user.age - 3) & Q(age__lt=user.age + 3)
         ).order_by("?").first()
 
         if buddy is None:

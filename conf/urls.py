@@ -29,7 +29,7 @@ urlpatterns = [
     path('', include('buddies.urls')),
     path('', include('api.urls')),
     path('', include('frontend.urls')),
-    path('hijack/', include('hijack.urls', namespace='hijack')),
+    # path('hijack/', include('hijack.urls', namespace='hijack')),
 
 ]
 
