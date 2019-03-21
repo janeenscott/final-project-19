@@ -13,10 +13,11 @@ def pair_buddies(self, request, queryset):
             pk=user.pk
         ).filter(
             buddy__isnull=True,
+            pk__in=[selected.pk for selected in queryset]
         ).filter(
             Q(rating__gt=user.rating + 5) | Q(rating__lt=user.rating - 5)
         ).filter(
-            Q(age__gt=user.age - 3) & Q(age__lt=user.age + 3)
+            Q(age__gt=int(user.age) - 3) & Q(age__lt=int(user.age) + 3)
         ).order_by("?").first()
 
         if buddy is None:
@@ -48,7 +49,7 @@ class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
     model = CustomUser
-    list_display = ['email', 'username', 'age', 'is_staff', 'city', 'image', 'buddy']
+    list_display = ['email', 'username', 'age', 'is_staff', 'city', 'rating', 'image', 'buddy']
     actions = [pair_buddies, clear_buddies]
 
 

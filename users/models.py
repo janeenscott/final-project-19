@@ -86,7 +86,7 @@ class CustomUser(AbstractUser):
     zipcode = models.IntegerField(null=True)
     city = models.CharField(max_length=100, choices=CITY_CHOICES, default='ALBUQUERQUE', null=True)
     state = USStateField(null=True)
-    age = models.CharField(max_length=2, null=True)
+    age = models.IntegerField(null=True)
     image = models.ImageField(null=True, upload_to='media/', default='static/images/placeholder.jpg')
     buddy = models.ForeignKey('users.CustomUser', null=True, blank=True, on_delete=models.SET_NULL)
     rating = models.DecimalField(decimal_places=5, max_digits=7)
