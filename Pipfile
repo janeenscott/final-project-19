@@ -18,6 +18,8 @@ pillow = "*"
 boto3 = "*"
 django-storages = "*"
 requests = "*"
+django-hijack = "*"
+#django-hijack-admin = "*"
 
 [requires]
 python_version = "3.7"

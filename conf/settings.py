@@ -88,6 +88,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'localflavor',
     'storages',
+    # 'hijack',
+    # 'compat',
+    # 'hijack_admin',
 
     'users',
     'api',
@@ -192,3 +195,8 @@ LOGOUT_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'
 
 REACT_APP_DIR = 'frontend/static'
+
+# # hijack settings
+# HIJACK_LOGIN_REDIRECT_URL = '/profile/'  # Where admins are redirected to after hijacking a user
+# HIJACK_LOGOUT_REDIRECT_URL = '/admin/auth/customuser/'  # Where admins are redirected to after releasing a user
+# HIJACK_ALLOW_GET_REQUESTS = True
