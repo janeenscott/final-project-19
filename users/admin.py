@@ -9,7 +9,7 @@ from .models import CustomUser
 
 def pair_buddies(self, request, queryset):
     for user in queryset:
-        user.buddy = CustomUser.objects.exclude(
+        buddy = CustomUser.objects.exclude(
             pk=user.pk
         ).filter(
             buddy__isnull=True,
@@ -17,12 +17,29 @@ def pair_buddies(self, request, queryset):
             Q(rating__gt=user.rating + 5) | Q(rating__lt=user.rating - 5)
         ).order_by("?").first()
 
+        if buddy is None:
+            continue
+
+        user.buddy = buddy
+
         print('user', user, 'user.buddy ', user.buddy)
 
         user.save()
 
+        buddy.buddy = user
+        buddy.save()
+
 
 pair_buddies.short_description = "Pair Buddies"
+
+
+def clear_buddies(self, request, queryset):
+    queryset.update(buddy=None)
+    # for user in queryset:
+    #     user.buddy = CustomUser.objects.update(buddy='null')
+
+
+clear_buddies.short_description = 'Clear Buddies'
 
 
 class CustomUserAdmin(UserAdmin):
@@ -30,7 +47,7 @@ class CustomUserAdmin(UserAdmin):
     form = CustomUserChangeForm
     model = CustomUser
     list_display = ['email', 'username', 'age', 'is_staff', 'city', 'image', 'buddy']
-    actions = [pair_buddies]
+    actions = [pair_buddies, clear_buddies]
 
 
 admin.site.register(CustomUser, CustomUserAdmin)

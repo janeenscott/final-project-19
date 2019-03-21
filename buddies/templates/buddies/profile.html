@@ -22,8 +22,16 @@
     <p>Image:</p> <img src="{{ user.image.url }}">
     <br>
     <h4>Your Pen Pal is: </h4>
+        {{ user.buddy }}
     <br>
-    <h4>Facts about your buddy's home:</h4>
+    <h4>Here's what it's like to live in your buddy's home:</h4>
+
+        <a class="teleport-widget-link" href="https://teleport.org/cities/{{ user.buddy.city }}/">Life quality score</a><script async class="teleport-widget-script" data-url="https://teleport.org/cities/{{ user.buddy.city }}/widget/scores/?currency=USD&citySwitcher=false" data-max-width="770" data-height="958" src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
+
+         <br>
+    <h4>Compared to what it's like in your hometown:</h4>
+
+        <a class="teleport-widget-link" href="https://teleport.org/cities/{{ user.city }}/">Life quality score</a><script async class="teleport-widget-script" data-url="https://teleport.org/cities/{{ user.city }}/widget/scores/?currency=USD&citySwitcher=false" data-max-width="770" data-height="958" src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
 
     {% else %}
 

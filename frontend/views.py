@@ -11,3 +11,5 @@ class ChatView(View):
                 return HttpResponse(f.read())
         except FileNotFoundError:
             return HttpResponse(status=501)
+
+

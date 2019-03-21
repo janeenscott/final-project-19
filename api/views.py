@@ -4,6 +4,7 @@ from rest_framework.authentication import SessionAuthentication
 from django.contrib.auth.mixins import LoginRequiredMixin
 from buddies.models import Message
 from .serializers import MessageSerializer
+from django.db.models import Q
 
 
 class CsrfExemptMixin(SessionAuthentication):
@@ -22,3 +23,8 @@ class MessageCreateView(LoginRequiredMixin, generics.ListCreateAPIView):
 # sender gets automatically set to the user that is making the request (the logged in user)
 #add date time_sent=self.request.something...
 
+    def get_queryset(self):
+        queryset = Message.objects.filter(
+                Q(sender=self.request.user) | Q(sender=self.request.user.buddy)
+            ).order_by('time_sent')
+        return queryset

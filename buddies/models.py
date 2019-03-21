@@ -10,3 +10,6 @@ class Message(models.Model):
     sender = models.ForeignKey(CustomUser, null=True, on_delete=models.SET_NULL)
     message_text = JSONField()
     time_sent = models.DateTimeField(default=timezone.now)
+
+
+
