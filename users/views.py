@@ -56,15 +56,15 @@ class SignupView(CreateView):
         return score
 
 #******** UNCOMMENT ONCE MODEL IS PULLING IN FROM FOREIGN KEYS ******
-    # def form_valid(self, form):
-    #     obj = form.save(commit=False)
-    #     obj.buddy = self.request.buddy
-    #     obj.rating = self.request.rating
-    #     obj.save()
-    #     return HttpResponseRedirect(self.success_url())
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.buddy = self.request.buddy
+        # obj.rating = self.request.rating
+        obj.save()
+        return HttpResponseRedirect(self.success_url())
 
 
-# class UpdtateProfileView(UpdateView):
+# class UpdateProfileView(UpdateView):
 #
 #     model = CustomUser
 #     form_class = CustomUserCreationForm
