@@ -26,22 +26,7 @@ class SignupView(CreateView):
         return HttpResponseRedirect(self.get_success_url())
 
     def get_quality_rating(self):
-        # response = requests.get('https://api.teleport.org/api/urban_areas/')
-        # urban_areas = response.json()
-        # # print(urban_areas)
-        # city_list = urban_areas['_links']["ua:item"]
-        # user_city = ''
-        #
-        #
-        # for city in city_list:
-        #     if city['name'] == self.object.city:
-        #         # while iterating over all cities in API,
-        #         # if the specific city name in the ua:item dictionary
-        #         # matches the city that the user selected...
-        #         # print('username and city: ', self.object.username, self.object.city)
-        #         user_city = city['href']
-        # print('user city: ', user_city)
-        # # print('user city href: ', user_city_href)
+
         city_stat_url = 'https://api.teleport.org/api/urban_areas/slug:{}/scores/'.format(self.object.city.lower())
         response = requests.get(city_stat_url)
         quality_data = response.json()
@@ -56,7 +41,6 @@ class SignupView(CreateView):
         return score
 
 
-
 # class UpdateProfileView(UpdateView):
 #
 #     model = CustomUser
@@ -69,7 +53,6 @@ class SignupView(CreateView):
 #     #     profile.updated_by = self.request.user
 #     #     profile.save()
 #     #     return redirect('buddies:profile')
-
 
 
 class LoginView(TemplateView):
