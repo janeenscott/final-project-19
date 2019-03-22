@@ -5,6 +5,7 @@ import ChatInput from  '../component/ChatInput'
 import { convertFromRaw, convertToRaw } from 'draft-js';
 import {stateToHTML} from 'draft-js-export-html';
 import moment from 'moment'
+import RedirectButton from "../component/RedirectButton";
 
 
 
@@ -91,6 +92,7 @@ class App extends Component {
               {/*</ul>*/}
               <ChatMessages messages={this.state.messages}/>
               <ChatInput sendMessage={this.sendMessage}/>
+              {/*<RedirectButton/>*/}
           </div>
         );
   }

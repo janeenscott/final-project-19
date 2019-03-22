@@ -24,12 +24,11 @@ def pair_buddies(self, request, queryset):
             continue
 
         user.buddy = buddy
+        buddy.buddy = user
 
         # print('user', user, 'user.buddy ', user.buddy)
 
         user.save()
-
-        buddy.buddy = user
         buddy.save()
 
 
@@ -49,7 +48,7 @@ class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
     model = CustomUser
-    list_display = ['email', 'username', 'age', 'is_staff', 'city', 'rating', 'image', 'buddy']
+    list_display = ['email', 'username', 'age', 'is_staff', 'city', 'rating', 'buddy']
     actions = [pair_buddies, clear_buddies]
 
 

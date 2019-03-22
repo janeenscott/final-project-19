@@ -55,14 +55,7 @@ class ChatInput extends Component{
                 editorClassName="editorClassName"
                 onEditorStateChange={this.onEditorStateChange}
             />
-             {/*<textarea*/}
-                 {/*cols={40}*/}
-                 {/*rows={10}*/}
-                 {/*name='messageText'*/}
-                 {/*onChange={this.handleChange}*/}
-                 {/*value={this.state.messageText}*/}
-                 {/*placeholder='Type your message here'*/}
-             {/*/>*/}
+
               <button type="submit" className="btn btn-primary">
                         Send
                     </button>
