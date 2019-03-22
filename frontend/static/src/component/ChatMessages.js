@@ -19,11 +19,17 @@ class ChatMessages extends Component {
     }
 
    convertMessageFromJSONToText = (text) => {
+        let x;
+
         try {
-            var x = stateToHTML(convertFromRaw(JSON.parse(text)));
+            x = stateToHTML(convertFromRaw(JSON.parse(text)));
+            console.log('try', x);
         }catch (e) {
-            var x = text;
+            x = text.blocks[0].text;
+            console.log('catch', x);
         }
+
+        console.log('what are we returning', x);
         return x
     };
 

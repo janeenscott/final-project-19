@@ -32,6 +32,7 @@ class ChatInput extends Component{
     handleSubmit(event){
         event.preventDefault();
         convertToRaw(this.state.editorState.getCurrentContent());
+        console.log('send message', this.state.editorState);
         this.props.sendMessage(this.state.editorState);
         this.setState({
             editorState: EditorState.createEmpty()
