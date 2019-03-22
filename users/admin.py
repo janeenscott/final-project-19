@@ -12,8 +12,8 @@ def pair_buddies(self, request, queryset):
         buddy = CustomUser.objects.exclude(
             pk=user.pk
         ).filter(
-            buddy__isnull=True,
-            pk__in=[selected.pk for selected in queryset]
+            pk__in=[selected.pk for selected in queryset],
+            buddy__isnull=True
         ).filter(
             Q(rating__gt=user.rating + 5) | Q(rating__lt=user.rating - 5)
         ).filter(
@@ -25,7 +25,7 @@ def pair_buddies(self, request, queryset):
 
         user.buddy = buddy
 
-        print('user', user, 'user.buddy ', user.buddy)
+        # print('user', user, 'user.buddy ', user.buddy)
 
         user.save()
 

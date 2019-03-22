@@ -7,42 +7,67 @@
 
     {% if user.is_authenticated %}
 
-    <h2>Hi {{ user.first_name }}!</h2>
+        <h2>Hi {{ user.first_name }}!</h2>
 
-    <h3>User Profile</h3>
+        <h3>User Profile</h3>
 
-    <p>First Name: {{ user.first_name }}</p>
-    <p>Username: {{ user.username }}</p>
-{#    <p>Email: {{ user.email }}</p>#}
-{#    <p>Phone: {{ user.phone_number }}</p>#}
-{#    <p>Zipcode: {{ user.zipcode }}</p>#}
-    <p>City: {{ user.city }}</p>
-{#    <p>State: {{ user.state }}</p>#}
-    <p>Age: {{ user.age }}</p>
-    <p>Image:</p> <img src="{{ user.image.url }}">
-    <br>
-    <h4>Your Pen Pal is: </h4>
-        {{ user.buddy }}
-    <br>
-    <h4>Here's what it's like to live in your buddy's home:</h4>
+        <p>First Name: {{ user.first_name }}</p>
+        <p>Username: {{ user.username }}</p>
+        {#    <p>Email: {{ user.email }}</p>#}
+        {#    <p>Phone: {{ user.phone_number }}</p>#}
+        {#    <p>Zipcode: {{ user.zipcode }}</p>#}
+        <p>City: {{ user.city }}</p>
+        {#    <p>State: {{ user.state }}</p>#}
+        <p>Age: {{ user.age }}</p>
+        <p>Image:</p> <img src="{{ user.image.url }}">
+        <br>
 
-        <a class="teleport-widget-link" href="https://teleport.org/cities/{{ user.buddy.city }}/">Life quality score</a><script async class="teleport-widget-script" data-url="https://teleport.org/cities/{{ user.buddy.city }}/widget/scores/?currency=USD&citySwitcher=false" data-max-width="770" data-height="958" src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
+        {% if user.buddy == None %}
+            <p>Your buddy has not been assigned yet</p>
 
-         <br>
-    <h4>Compared to what it's like in your hometown:</h4>
+        {% else %}
+            <h4>Your Pen Pal is: </h4>
+            {{ user.buddy }}
+        {% endif %}
+        <br>
+                {% if user.buddy == None %}
+                     <h4>Here are some statistics about your hometown: </h4>
 
-        <a class="teleport-widget-link" href="https://teleport.org/cities/{{ user.city }}/">Life quality score</a><script async class="teleport-widget-script" data-url="https://teleport.org/cities/{{ user.city }}/widget/scores/?currency=USD&citySwitcher=false" data-max-width="770" data-height="958" src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
+        <a class="teleport-widget-link" href="https://teleport.org/cities/{{ user.city }}/">Life quality score</a>
+        <script async class="teleport-widget-script"
+                data-url="https://teleport.org/cities/{{ user.city }}/widget/scores/?currency=USD&citySwitcher=false"
+                data-max-width="770" data-height="958"
+                src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
+
+{% else %}
+        <h4>Here's what it's like to live in your buddy's home:</h4>
+
+        <a class="teleport-widget-link" href="https://teleport.org/cities/{{ user.buddy.city }}/">Life quality score</a>
+        <script async class="teleport-widget-script"
+                data-url="https://teleport.org/cities/{{ user.buddy.city }}/widget/scores/?currency=USD&citySwitcher=false"
+                data-max-width="770" data-height="958"
+                src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
+
+        <br>
+        <h4>Compared to what it's like in your hometown:</h4>
+
+        <a class="teleport-widget-link" href="https://teleport.org/cities/{{ user.city }}/">Life quality score</a>
+        <script async class="teleport-widget-script"
+                data-url="https://teleport.org/cities/{{ user.city }}/widget/scores/?currency=USD&citySwitcher=false"
+                data-max-width="770" data-height="958"
+                src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
+                    {% endif %}
 
     {% else %}
 
-    <h2>Please <a href="{% url 'users:login' %}">login</a>
-  to see this page</h2>
+        <h2>Please <a href="{% url 'users:login' %}">login</a>
+            to see this page</h2>
 
     {% endif %}
 
 
-{#<div class="mt-3">#}
-{#<a href="{% url 'users:update' %}">Edit Your Profile</a>#}
-{#</div>#}
+    {#<div class="mt-3">#}
+    {#<a href="{% url 'users:update' %}">Edit Your Profile</a>#}
+    {#</div>#}
 
 {% endblock content %}
