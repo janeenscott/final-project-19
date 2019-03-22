@@ -1,30 +1,23 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
-import ChatMessages from  '../component/ChatMessages'
-import ChatInput from  '../component/ChatInput'
-import { convertFromRaw, convertToRaw } from 'draft-js';
+import ChatMessages from '../component/ChatMessages'
+import ChatInput from '../component/ChatInput'
+import {convertFromRaw, convertToRaw} from 'draft-js';
 import {stateToHTML} from 'draft-js-export-html';
 import moment from 'moment'
-import RedirectButton from "../component/RedirectButton";
-
+import UpdateMessage from "../component/UpdateMessage";
 
 
 class App extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            messages: [
-                // {messageText: '', sender: '', timeSent: ''},
-                // {messageText: "What's up?", sender: 'Kelsey', timeSent: '12:02pm'},
-                // {messageText: "Nothing. Just missing you and Hashbrown, wondering what you ladies are up to.", sender: 'Janeen', timeSent: '12:02pm'},
-                // {messageText: "Girl, we're just both eating tomatoes, you're not missing much.", sender: 'Kelsey', timeSent: '12:03pm'}
-                ]
-            // only need message text in state
+            messages: [],
+            isEditing: false,
         };
-        this.sendMessage = this.sendMessage.bind(this)
+        this.sendMessage = this.sendMessage.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
     }
-
-
 
     sendMessage = (editorState) => {
         var body = {
@@ -51,13 +44,49 @@ class App extends Component {
 
             this.setState({messages: messages})
 
-            console.log('this: ', this.state.messages[messages.length-1]);
+            console.log('this: ', this.state.messages[messages.length - 1]);
         });
-
 
 
     };
 
+    updateMessage = (editorState) => {
+        var body = {
+            message_text: convertToRaw(editorState.getCurrentContent())
+        };
+        console.log('body: ', body);
+        console.log('editorState: ', editorState);
+
+        fetch('/api/message/id', {
+            method: "PATCH",
+            body: JSON.stringify(body),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+        }).then((response) => {
+            return response.json()
+        }).then((post) => {
+            var messages = this.state.messages;
+
+            post.message_text = JSON.stringify(post.message_text);
+
+            messages.push(post);
+
+            this.setState({messages: messages})
+
+            console.log('this: ', this.state.messages[messages.length - 1]);
+        });
+
+
+    };
+
+    handleEdit(message) {
+
+        console.log('handleEdit is firing', message);
+        this.setState({isEditing: message});
+
+    }
 
 // loads messages from api/message onto screen
     componentDidMount() {
@@ -66,36 +95,48 @@ class App extends Component {
             .then(
                 (result) => {
                     console.log(result)
-            this.setState({
-                messages: result
-            });
-        },
-                (error) =>{
+                    this.setState({
+                        messages: result
+                    });
+                },
+                (error) => {
                     this.setState({
                         error
                     });
                 }
-
             )
     }
 
     render() {
+        const isEditing = this.state.isEditing;
+
         return (
-          <div className="App">
-              <h1>Let's talk!</h1>
-              {/*<h3>Not sure what to say?</h3>*/}
-              {/*<ul>*/}
-                  {/*<li className="topic">Convo topic #1</li>*/}
-                  {/*<li className="topic">Convo topic #2</li>*/}
-                  {/*<li className="topic">Convo topic #3</li>*/}
-                  {/*<li className="topic">Convo topic #4</li>*/}
-              {/*</ul>*/}
-              <ChatMessages messages={this.state.messages}/>
-              <ChatInput sendMessage={this.sendMessage}/>
-              {/*<RedirectButton/>*/}
-          </div>
+            <div className="App">
+                <h1>Let's talk!</h1>
+                {/*<h3>Not sure what to say?</h3>*/}
+                {/*<ul>*/}
+                {/*<li className="topic">Convo topic #1</li>*/}
+                {/*<li className="topic">Convo topic #2</li>*/}
+                {/*<li className="topic">Convo topic #3</li>*/}
+                {/*<li className="topic">Convo topic #4</li>*/}
+                {/*</ul>*/}
+
+
+                {isEditing ? (
+                    <UpdateMessage updateMessage={this.updateMessage} message={this.state.isEditing}/>
+                ) : (
+                    <div>
+                        <ChatMessages messages={this.state.messages} handleEdit={this.handleEdit}/>
+                        <ChatInput sendMessage={this.sendMessage}/>
+                    </div>
+                    )
+                }
+
+
+
+            </div>
         );
-  }
+    }
 }
 
 export default App;

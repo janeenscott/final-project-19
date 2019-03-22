@@ -24,6 +24,7 @@ class ChatInput extends Component{
     // }
 
     onEditorStateChange = (editorState) => {
+
         this.setState({
             editorState,
         });

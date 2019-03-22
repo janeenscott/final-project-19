@@ -7,6 +7,7 @@ import { convertFromRaw } from 'draft-js';
 import moment from 'moment'
 
 
+
 class ChatMessages extends Component {
     constructor(props) {
         super(props);
@@ -47,6 +48,9 @@ class ChatMessages extends Component {
                                 </div>
                             <div>
                                 {message['time_sent']}
+                            </div>
+                            <div>
+                                <p className='edit' onClick={()=>this.props.handleEdit(message)}>edit</p><p className='delete'>delete</p>
                             </div>
 
 
