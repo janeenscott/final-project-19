@@ -1,19 +1,35 @@
-<!--
-UNNECESSARY FILE -- USE INDEX.HTML FROM BUILD AND CHATVIEW TO SEE REACT COMPONENTS
--->
-
-
-{#{% extends 'buddies/base.html' %}#}
-{##}
-{#{% block content %}#}
-{#    <h2>Messenger</h2>#}
-{#    <div class="chat"></div>#}
-{#    <!--react component goes in chat div-->#}
-{#    <h3>Not sure what to say?</h3>#}
-{#    <ul>#}
-{#    <li class="topic">Convo topic #1</li>#}
-{#    <li class="topic">Convo topic #2</li>#}
-{#    <li class="topic">Convo topic #3</li>#}
-{#    <li class="topic">Convo topic #4</li>#}
+{#<nav id="nav-menu-container">#}
+{#    <ul class="nav-menu">#}
+{#        <li class="nav">#}
+{#            <a href="{% url 'buddies:index' %}">Home</a>#}
+{#        </li>#}
+{#        <!-- write if/else statement to switch login and logout#}
+{#         depending on user authentication status-->#}
+{#        {% if request.user.is_authenticated %}#}
+{#         <li class="nav">#}
+{#            <a href="{% url 'logout' %}">Logout</a>#}
+{#        </li>#}
+{#            {% else %}#}
+{#        <li class="nav">#}
+{#            <a href="{% url 'users:login' %}">Login</a>#}
+{#        </li>#}
+{#        {% endif %}#}
+{#         <li class="nav">#}
+{#            <a href="{% url 'buddies:profile' %}">Profile</a>#}
+{#        </li>#}
+{#         <li class="nav">#}
+{#            <a href="{% url 'frontend:chat' %}">Chat</a>#}
+{#        </li>#}
 {#    </ul>#}
-{#{% endblock content %}#}
+{#</nav>#}
+{##}
+{#  <!--==========================#}
+{#    Hero Section#}
+{#  ============================-->#}
+{#  <section id="hero">#}
+{#    <div class="hero-container">#}
+{#      <h1>Make a New Friend</h1>#}
+{#      <h2>The Mission of .....</h2>#}
+{#      <a href="{% url 'users:login' %}" class="btn-get-started">Log In</a>#}
+{#    </div>#}
+{#  </section><!-- #hero -->#}

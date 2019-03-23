@@ -1,69 +1,83 @@
 {% extends 'buddies/base.html' %}
-
+ {% block title %}Profile{% endblock title %}
 
 {% block content %}
 
-    {% block title %}Profile{% endblock title %}
 
-    {% if user.is_authenticated %}
-
+    <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
         <h2>Hi {{ user.first_name }}!</h2>
+    </div>
+    <div class="prof-block row justify-content-center">
+        <div class="user-info col-6">
+            {% if user.is_authenticated %}
 
-        <h3>User Profile</h3>
 
-        <p>First Name: {{ user.first_name }}</p>
-        <p>Username: {{ user.username }}</p>
-        {#    <p>Email: {{ user.email }}</p>#}
-        {#    <p>Phone: {{ user.phone_number }}</p>#}
-        {#    <p>Zipcode: {{ user.zipcode }}</p>#}
-        <p>City: {{ user.city }}</p>
-        {#    <p>State: {{ user.state }}</p>#}
-        <p>Age: {{ user.age }}</p>
-        <p>Image:</p> <img src="{{ user.image.url }}">
-        <br>
+{#                <h2>Hi {{ user.first_name }}!</h2>#}
 
-        {% if user.buddy == None %}
-            <p>Your buddy has not been assigned yet</p>
 
-        {% else %}
-            <h4>Your Pen Pal is: </h4>
-            {{ user.buddy }}
-        {% endif %}
-        <br>
+                <h3>User Profile</h3>
+
+                <p>First Name: {{ user.first_name }}</p>
+                <p>Image:</p> <img class="prof-pic" src="{{ user.image.url }}">
+                <p>Username: {{ user.username }}</p>
+                <p>City: {{ user.city }}</p>
+                <p>Age: {{ user.age }}</p>
+
+                <br>
+
                 {% if user.buddy == None %}
-                     <h4>Here are some statistics about your hometown: </h4>
+                    <p>Your buddy has not been assigned yet</p>
 
-        <a class="teleport-widget-link" href="https://teleport.org/cities/{{ user.city }}/">Life quality score</a>
-        <script async class="teleport-widget-script"
-                data-url="https://teleport.org/cities/{{ user.city }}/widget/scores/?currency=USD&citySwitcher=false"
-                data-max-width="770" data-height="958"
-                src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
+                {% else %}
+                    <h4>Your Pen Pal is: </h4>
+                    <p>{{ user.buddy }}</p>
+                   <img class="prof-pic" src="{{ user.buddy.image.url }}">
+                {% endif %}
+                </div>
+                <br>
+                {% if user.buddy == None %}
+                    <h4>Here are some statistics about your hometown: </h4>
 
-{% else %}
-        <h4>Here's what it's like to live in your buddy's home:</h4>
+                    <a class="teleport-widget-link" href="https://teleport.org/cities/{{ user.city }}/">Life quality
+                        score</a>
+                    <script async class="teleport-widget-script"
+                            data-url="https://teleport.org/cities/{{ user.city }}/widget/scores/?currency=USD&citySwitcher=false"
+                            data-max-width="770" data-height="958"
+                            src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
 
-        <a class="teleport-widget-link" href="https://teleport.org/cities/{{ user.buddy.city }}/">Life quality score</a>
-        <script async class="teleport-widget-script"
-                data-url="https://teleport.org/cities/{{ user.buddy.city }}/widget/scores/?currency=USD&citySwitcher=false"
-                data-max-width="770" data-height="958"
-                src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
+                {% else %}
+                    <div class="row">
+                        <div class="col-6">
+                            <h4>Here's what it's like to live in your buddy's home:</h4>
 
-        <br>
-        <h4>Compared to what it's like in your hometown:</h4>
+                            <a class="teleport-widget-link" href="https://teleport.org/cities/{{ user.buddy.city }}/">Life
+                                quality score</a>
+                            <script async class="teleport-widget-script"
+                                    data-url="https://teleport.org/cities/{{ user.buddy.city }}/widget/scores/?currency=USD&citySwitcher=false"
+                                    data-max-width="770" data-height="958"
+                                    src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
+                        </div>
+                        <div class="col-6">
+                            <h4>Compared to what it's like in your hometown:</h4>
 
-        <a class="teleport-widget-link" href="https://teleport.org/cities/{{ user.city }}/">Life quality score</a>
-        <script async class="teleport-widget-script"
-                data-url="https://teleport.org/cities/{{ user.city }}/widget/scores/?currency=USD&citySwitcher=false"
-                data-max-width="770" data-height="958"
-                src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
-                    {% endif %}
+                            <a class="teleport-widget-link" href="https://teleport.org/cities/{{ user.city }}/">Life
+                                quality score</a>
+                            <script async class="teleport-widget-script"
+                                    data-url="https://teleport.org/cities/{{ user.city }}/widget/scores/?currency=USD&citySwitcher=false"
+                                    data-max-width="770" data-height="958"
+                                    src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
+                        </div>
+                    </div>
+                {% endif %}
 
-    {% else %}
+            {% else %}
 
-        <h2>Please <a href="{% url 'users:login' %}">login</a>
-            to see this page</h2>
+                <h2>Please <a href="{% url 'users:login' %}">login</a>
+                    to see this page</h2>
 
-    {% endif %}
+            {% endif %}
+    </div>
+    </div>
 
 
     {#<div class="mt-3">#}

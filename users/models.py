@@ -88,6 +88,7 @@ class CustomUser(AbstractUser):
     state = USStateField(null=True)
     age = models.IntegerField(null=True)
     image = models.ImageField(null=True, upload_to='media/', default='static/images/placeholder.jpg')
+    # maybe change buddy to a OnetoOne field to correct for duplicates
     buddy = models.ForeignKey('users.CustomUser', null=True, blank=True, on_delete=models.SET_NULL)
     rating = models.DecimalField(decimal_places=5, max_digits=7)
 
