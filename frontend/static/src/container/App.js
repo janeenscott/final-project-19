@@ -81,7 +81,7 @@ class App extends Component {
 
             console.log('body: ', body);
             console.log('editorState: ', editorState);
-            this.setState({messages: messages});
+            this.setState({messages: messages, isEditing: false});
 
             console.log('new state, last message ', this.state.messages[messages.length - 1]);
         });
@@ -120,13 +120,6 @@ class App extends Component {
 
     }
 
-    // handleDelete(message){
-    //     console.log('handleDelete is firing, ', message);
-    //     this.props.deleteMessage(this.state.editorState);
-    //     this.setState({
-    //         editorState: EditorState.createEmpty()
-    //     })
-    // }
 
 
 // loads messages from api/message onto screen
@@ -153,6 +146,9 @@ class App extends Component {
 
         return (
             <div className="App">
+                 <button>
+                    <a href="../profile">Go Back to Profile</a>
+                </button>
                 <h1>Let's talk!</h1>
                 {/*<h3>Not sure what to say?</h3>*/}
                 {/*<ul>*/}
@@ -173,9 +169,7 @@ class App extends Component {
                 )
                 }
                 {/*<Button onClick={location.href='buddies:profile'}/>*/}
-                <button>
-                    <a href="../profile">Go Back to Profile</a>
-                </button>
+
 
             </div>
         );

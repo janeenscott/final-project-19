@@ -32,6 +32,9 @@
   }
 }
 
+img{
+    width: 100%;
+}
 .message-list{
   list-style-type: none;
 }
