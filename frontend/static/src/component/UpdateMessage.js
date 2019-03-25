@@ -38,6 +38,7 @@ class UpdateMessage extends Component {
         this.setState({editorState});
     };
 
+
     handleSubmit(event) {
         event.preventDefault();
         console.log('editor state on submit: ', this.state.editorState);

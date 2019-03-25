@@ -20,11 +20,39 @@ class MessageCreateView(LoginRequiredMixin, generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(sender=self.request.user)
-# sender gets automatically set to the user that is making the request (the logged in user)
-#add date time_sent=self.request.something...
 
     def get_queryset(self):
         queryset = Message.objects.filter(
                 Q(sender=self.request.user) | Q(sender=self.request.user.buddy)
             ).order_by('time_sent')
+        return queryset
+
+
+class MessageUpdateView(LoginRequiredMixin, generics.RetrieveUpdateAPIView):
+    queryset = Message.objects.all()
+    serializer_class = MessageSerializer
+    authentication_classes = (CsrfExemptMixin,)
+
+    def perform_create(self, serializer):
+        serializer.save(sender=self.request.user)
+
+    def get_queryset(self):
+        queryset = Message.objects.filter(
+            Q(sender=self.request.user) | Q(sender=self.request.user.buddy)
+        ).order_by('time_sent')
+        return queryset
+
+
+class MessageDeleteView(LoginRequiredMixin, generics.DestroyAPIView):
+    queryset = Message.objects.all()
+    serializer_class = MessageSerializer
+    authentication_classes = (CsrfExemptMixin,)
+
+    def perform_create(self, serializer):
+        serializer.save(sender=self.request.user)
+
+    def get_queryset(self):
+        queryset = Message.objects.filter(
+            Q(sender=self.request.user) | Q(sender=self.request.user.buddy)
+        ).order_by('time_sent')
         return queryset

@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import '../container/App.css';
 import {stateToHTML} from 'draft-js-export-html';
-import { convertFromRaw } from 'draft-js';
+import {convertFromRaw, EditorState} from 'draft-js';
 import Listgroup from 'react-bootstrap/ListGroup'
 
 
 import moment from 'moment'
-
 
 
 class ChatMessages extends Component {
@@ -20,13 +19,13 @@ class ChatMessages extends Component {
 
     }
 
-   convertMessageFromJSONToText = (text) => {
+    convertMessageFromJSONToText = (text) => {
         let x;
 
         try {
             x = stateToHTML(convertFromRaw(JSON.parse(text)));
             console.log('try', x);
-        }catch (e) {
+        } catch (e) {
             x = text.blocks[0].text;
             console.log('catch', x);
         }
@@ -34,6 +33,7 @@ class ChatMessages extends Component {
         console.log('what are we returning', x);
         return x
     };
+
 
     render() {
         return (
@@ -44,16 +44,16 @@ class ChatMessages extends Component {
                             <Listgroup.Item>
                                 {message.sender['first_name']}
                             </Listgroup.Item>
-                                <Listgroup.Item
-                                    dangerouslySetInnerHTML={{__html: this.convertMessageFromJSONToText(message['message_text'])}}>
-                                </Listgroup.Item>
+                            <Listgroup.Item
+                                dangerouslySetInnerHTML={{__html: this.convertMessageFromJSONToText(message['message_text'])}}>
+                            </Listgroup.Item>
                             <Listgroup.Item>
                                 {message['time_sent']}
                             </Listgroup.Item>
                             <Listgroup.Item>
-                                <p className='edit' onClick={()=>this.props.handleEdit(message)}>&#9998;</p><p className='delete'>🗑️</p>
+                                <p className='edit' onClick={() => this.props.handleEdit(message)}>&#9998;</p>
+                                <p className='delete' onClick={() => this.props.deleteMessage(message)}>🗑️</p>
                             </Listgroup.Item>
-
 
                             <br/>
                         </Listgroup>

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import ChatMessages from '../component/ChatMessages'
 import ChatInput from '../component/ChatInput'
-import {convertFromRaw, convertToRaw} from 'draft-js';
+import {convertFromRaw, convertToRaw, EditorState} from 'draft-js';
 import {stateToHTML} from 'draft-js-export-html';
 import moment from 'moment'
 import UpdateMessage from "../component/UpdateMessage";
@@ -16,9 +16,13 @@ class App extends Component {
             messages: [],
             isEditing: false,
         };
+
         this.sendMessage = this.sendMessage.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
+        // this.handleDelete = this.handleDelete.bind(this);
     }
+
+    //************ API methods *********
 
     sendMessage = (editorState) => {
         var body = {
@@ -58,7 +62,7 @@ class App extends Component {
         console.log('updateMessage, body: ', body);
         console.log('updateMessage, editorState: ', editorState);
 
-        fetch('/api/message/id', {
+        fetch(`/api/message/${this.state.isEditing.id}/`, {
             method: "PATCH",
             body: JSON.stringify(body),
             headers: {
@@ -73,8 +77,10 @@ class App extends Component {
             post.message_text = JSON.stringify(post.message_text);
 
             messages.push(post);
-   console.log('body: ', body);
-        console.log('editorState: ', editorState);
+
+
+            console.log('body: ', body);
+            console.log('editorState: ', editorState);
             this.setState({messages: messages});
 
             console.log('new state, last message ', this.state.messages[messages.length - 1]);
@@ -83,12 +89,45 @@ class App extends Component {
 
     };
 
+    deleteMessage = (message) => {
+        console.log('message: ', message);
+        fetch(`/api/message/delete/${message.id}/`, {
+            method: "DELETE",
+            },
+        )
+            .then(response => {
+              console.log(response);
+            },
+            )
+            .then((messages) => {
+                let allMessages = this.state.messages;
+                let newMessages = allMessages.filter((currentMessage) => {
+                    return currentMessage.id !== message.id;
+                });
+
+                this.setState({messages: newMessages})
+                }
+            )
+    };
+
+
+    //******* Handlers **********
+
     handleEdit(message) {
 
         console.log('handleEdit is firing', message);
         this.setState({isEditing: message});
 
     }
+
+    // handleDelete(message){
+    //     console.log('handleDelete is firing, ', message);
+    //     this.props.deleteMessage(this.state.editorState);
+    //     this.setState({
+    //         editorState: EditorState.createEmpty()
+    //     })
+    // }
+
 
 // loads messages from api/message onto screen
     componentDidMount() {
@@ -125,18 +164,18 @@ class App extends Component {
 
 
                 {isEditing ? (
-                    <UpdateMessage updateMessage={this.updateMessage} message={this.state.isEditing} />
+                    <UpdateMessage updateMessage={this.updateMessage} message={this.state.isEditing}/>
                 ) : (
                     <div>
-                        <ChatMessages messages={this.state.messages} handleEdit={this.handleEdit}/>
+                        <ChatMessages messages={this.state.messages} deleteMessage={this.deleteMessage} handleEdit={this.handleEdit}/>
                         <ChatInput sendMessage={this.sendMessage}/>
                     </div>
-                    )
+                )
                 }
-    {/*<Button onClick={location.href='buddies:profile'}/>*/}
-    <button>
-    <a href="../profile">Go Back to Profile</a>
-        </button> 
+                {/*<Button onClick={location.href='buddies:profile'}/>*/}
+                <button>
+                    <a href="../profile">Go Back to Profile</a>
+                </button>
 
             </div>
         );
