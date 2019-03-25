@@ -13,7 +13,7 @@ class UpdateMessage extends Component {
             editorState: null
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.onChange = this.onChange.bind(this);
+        // this.onChange = this.onChange.bind(this);
     }
 
 
@@ -27,14 +27,20 @@ class UpdateMessage extends Component {
         });
     }
 
-    onChange(editorState) {
-        console.log('editorState', editorState);
-        // this.setState({editorState});
-    }
+    //  onChange(editorState) {
+    //     console.log('onChange, editorState', editorState);
+    //     // this.setState({editorState});
+    // }
+
+    onEditorStateChange = (editorState) => {
+        console.log('editorState onEditorStateChange: ', editorState);
+        // console.log(editorState.message.id)
+        this.setState({editorState});
+    };
 
     handleSubmit(event) {
         event.preventDefault();
-        console.log('this editor state', this.state.editorState);
+        console.log('editor state on submit: ', this.state.editorState);
         // convertToRaw(this.state.editorState.getCurrentContent());
         // console.log('send message', this.state.editorState);
         this.props.updateMessage(this.state.editorState);
@@ -44,7 +50,7 @@ class UpdateMessage extends Component {
     }
 
     render() {
-        console.log('this is first', this.state.editorState);
+        console.log('editor state at top of render: ', this.state.editorState);
         return (
             <form
                 className='message-input-form'
@@ -53,7 +59,8 @@ class UpdateMessage extends Component {
 
                 <Editor
                     editorState={this.state.editorState}
-                    onChange={this.onChange}
+                    onEditorStateChange={this.onEditorStateChange}
+                    // onChange={this.onChange}
                     toolbarClassName="toolbarClassName"
                     wrapperClassName="wrapperClassName"
                     editorClassName="editorClassName"

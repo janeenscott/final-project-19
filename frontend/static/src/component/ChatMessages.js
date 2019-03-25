@@ -51,7 +51,7 @@ class ChatMessages extends Component {
                                 {message['time_sent']}
                             </Listgroup.Item>
                             <Listgroup.Item>
-                                <p className='edit' onClick={()=>this.props.handleEdit(message)}>edit</p><p className='delete'>delete</p>
+                                <p className='edit' onClick={()=>this.props.handleEdit(message)}>&#9998;</p><p className='delete'>🗑️</p>
                             </Listgroup.Item>
 
 

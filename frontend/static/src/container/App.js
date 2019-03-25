@@ -6,6 +6,7 @@ import {convertFromRaw, convertToRaw} from 'draft-js';
 import {stateToHTML} from 'draft-js-export-html';
 import moment from 'moment'
 import UpdateMessage from "../component/UpdateMessage";
+import Button from 'react-bootstrap/Button'
 
 
 class App extends Component {
@@ -42,7 +43,7 @@ class App extends Component {
 
             messages.push(post);
 
-            this.setState({messages: messages})
+            this.setState({messages: messages});
 
             console.log('this: ', this.state.messages[messages.length - 1]);
         });
@@ -54,8 +55,8 @@ class App extends Component {
         var body = {
             message_text: convertToRaw(editorState.getCurrentContent())
         };
-        console.log('body: ', body);
-        console.log('editorState: ', editorState);
+        console.log('updateMessage, body: ', body);
+        console.log('updateMessage, editorState: ', editorState);
 
         fetch('/api/message/id', {
             method: "PATCH",
@@ -72,10 +73,11 @@ class App extends Component {
             post.message_text = JSON.stringify(post.message_text);
 
             messages.push(post);
+   console.log('body: ', body);
+        console.log('editorState: ', editorState);
+            this.setState({messages: messages});
 
-            this.setState({messages: messages})
-
-            console.log('this: ', this.state.messages[messages.length - 1]);
+            console.log('new state, last message ', this.state.messages[messages.length - 1]);
         });
 
 
@@ -123,7 +125,7 @@ class App extends Component {
 
 
                 {isEditing ? (
-                    <UpdateMessage updateMessage={this.updateMessage} message={this.state.isEditing}/>
+                    <UpdateMessage updateMessage={this.updateMessage} message={this.state.isEditing} />
                 ) : (
                     <div>
                         <ChatMessages messages={this.state.messages} handleEdit={this.handleEdit}/>
@@ -131,8 +133,10 @@ class App extends Component {
                     </div>
                     )
                 }
-
-
+    {/*<Button onClick={location.href='buddies:profile'}/>*/}
+    <button>
+    <a href="../profile">Go Back to Profile</a>
+        </button> 
 
             </div>
         );
