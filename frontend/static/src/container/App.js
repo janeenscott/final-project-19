@@ -81,7 +81,7 @@ class App extends Component {
 
             console.log('body: ', body);
             console.log('editorState: ', editorState);
-            this.setState({messages: messages, isEditing: false});
+            this.setState({messages: messages});
 
             console.log('new state, last message ', this.state.messages[messages.length - 1]);
         });
