@@ -9,6 +9,11 @@ from .models import CustomUser
 
 def pair_buddies(self, request, queryset):
     for user in queryset:
+
+        user.refresh_from_db()
+        if user.buddy is not None:
+            continue
+
         buddy = CustomUser.objects.exclude(
             pk=user.pk
         ).filter(
