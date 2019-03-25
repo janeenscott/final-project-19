@@ -112,7 +112,7 @@ class App extends Component {
 
         return (
             <div className="App">
-                <h1>Let's talk!</h1>
+                <Card>Let's talk!</Card>
                 {/*<h3>Not sure what to say?</h3>*/}
                 {/*<ul>*/}
                 {/*<li className="topic">Convo topic #1</li>*/}

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import '../container/App.css';
 import {stateToHTML} from 'draft-js-export-html';
 import { convertFromRaw } from 'draft-js';
+import Listgroup from 'react-bootstrap/ListGroup'
 
 
 import moment from 'moment'
@@ -36,30 +37,30 @@ class ChatMessages extends Component {
 
     render() {
         return (
-            <ul className='message-list'>
+            <div className='message-list'>
                 {this.props.messages.map(message => {
                     return (
-                        <li key={message.id}>
-                            <div>
+                        <Listgroup className="message" key={message.id}>
+                            <Listgroup.Item>
                                 {message.sender['first_name']}
-                            </div>
-                                <div
+                            </Listgroup.Item>
+                                <Listgroup.Item
                                     dangerouslySetInnerHTML={{__html: this.convertMessageFromJSONToText(message['message_text'])}}>
-                                </div>
-                            <div>
+                                </Listgroup.Item>
+                            <Listgroup.Item>
                                 {message['time_sent']}
-                            </div>
-                            <div>
+                            </Listgroup.Item>
+                            <Listgroup.Item>
                                 <p className='edit' onClick={()=>this.props.handleEdit(message)}>edit</p><p className='delete'>delete</p>
-                            </div>
+                            </Listgroup.Item>
 
 
                             <br/>
-                        </li>
+                        </Listgroup>
                     )
                 })
                 }
-            </ul>
+            </div>
         )
     }
 }

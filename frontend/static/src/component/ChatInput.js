@@ -49,6 +49,7 @@ class ChatInput extends Component{
              onSubmit={this.handleSubmit}
          >
 
+             <div className='editor'>
                <Editor
                 editorState={this.state.editorState}
                 toolbarClassName="toolbarClassName"
@@ -60,6 +61,7 @@ class ChatInput extends Component{
               <button type="submit" className="btn btn-primary">
                         Send
                     </button>
+             </div>
          </form>
         )
     }
