@@ -42,6 +42,15 @@ class MessageUpdateView(LoginRequiredMixin, generics.RetrieveUpdateAPIView):
         ).order_by('time_sent')
         return queryset
 
+    # def get_object(self):
+    #     object.queryset = Message.objects.filter(user=self.request.user)
+    #     can_edit = Message.objects.get(pk=pk).first()
+    #     return can_edit
+    # this is working kind of.... allows both users to go to edit screen, but does not save
+    # edits.... unfortunately that is also for both users
+
+    # return self.Message.objects.get(pk=self.request.user.pk)
+
 
 class MessageDeleteView(LoginRequiredMixin, generics.DestroyAPIView):
     queryset = Message.objects.all()
