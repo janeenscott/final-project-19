@@ -7,12 +7,12 @@
 <div class="profile-page">
   <div class="wrapper">
     <div class="page-header page-header-small" filter-color="green">
-      <div class="page-header-image" data-parallax="true" style="background-image: url('../buddies/static/images/background2.jpg');"></div>
+      <div class="page-header-image" data-parallax="true"></div>
       <div class="container">
         <div class="content-center">
           <div class="cc-profile-image"><a href="#"><img src="{{ user.image.url }}" alt="Image"/></a></div>
           <div class="h2 title">{{ user.first_name }}</div>
-            <p class="category text-white">Username: {{ user.username }}, City: {{ user.city }}, Age: {{ user.age }}</p>
+            <p class="category text-white">City: {{ user.city }}, Age: {{ user.age }}</p>
         </div>
       </div>
 
@@ -43,15 +43,17 @@
 
         <div class="user-info col-6">
                     <h4>Your Pen Pal is: </h4>
-                    <p>{{ user.buddy }}</p>
-                    <div class="cc-profile-image">
+                    <p>{{ user.buddy.first_name }}</p>
+                       <div class="cc-profile-image">
                    <img class="prof-pic cc-" src="{{ user.buddy.image.url }}">
                     </div>
+                      <p>City: {{ user.buddy.city }}, Age: {{ user.buddy.age }}</p>
+
                 {% endif %}
                 </div>
                 <br>
                 {% if user.buddy == None %}
-                    <h4>Here are some statistics about your hometown: </h4>
+                    <h4 class="score-heading">Here are some statistics about your hometown: </h4>
 
                     <a class="teleport-widget-link" href="https://teleport.org/cities/{{ user.city }}/">{{ user.city }}</a>
                     <script async class="teleport-widget-script"
@@ -60,9 +62,11 @@
                             src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
 
                 {% else %}
+
+
                     <div class="row">
                         <div class="col-6">
-                            <h4>Here's what it's like to live in your buddy's home:</h4>
+                            <h4 class="score-heading">Here's what it's like to live in your buddy's home:</h4>
 
                             <a class="teleport-widget-link" href="https://teleport.org/cities/{{ user.buddy.city }}/">Life
                                 quality score</a>
@@ -72,7 +76,7 @@
                                     src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
                         </div>
                         <div class="col-6">
-                            <h4>Compared to what it's like in your hometown:</h4>
+                            <h4 class="score-heading">Compared to what it's like in your hometown:</h4>
 
                             <a class="teleport-widget-link" href="https://teleport.org/cities/{{ user.city }}/">Life
                                 quality score</a>

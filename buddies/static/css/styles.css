@@ -305,3 +305,14 @@ Profile Page
   -webkit-animation: none;
           animation: none;
 }
+
+.page-header-image{
+  background-image: url(../images/background3.jpg);
+}
+
+.score-heading{
+  /*border: red solid 2px;*/
+  width: auto;
+  height: 70px;
+}
+
