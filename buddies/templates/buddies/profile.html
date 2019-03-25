@@ -53,8 +53,7 @@
                 {% if user.buddy == None %}
                     <h4>Here are some statistics about your hometown: </h4>
 
-                    <a class="teleport-widget-link" href="https://teleport.org/cities/{{ user.city }}/">Life quality
-                        score</a>
+                    <a class="teleport-widget-link" href="https://teleport.org/cities/{{ user.city }}/">{{ user.city }}</a>
                     <script async class="teleport-widget-script"
                             data-url="https://teleport.org/cities/{{ user.city }}/widget/scores/?currency=USD&citySwitcher=false"
                             data-max-width="770" data-height="958"
