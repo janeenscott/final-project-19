@@ -45,9 +45,11 @@ class MessageUpdateView(LoginRequiredMixin, generics.RetrieveUpdateAPIView):
     def get_object(self):
         mes_pk = self.kwargs.get('pk')
 
-
-        return Message.objects.get(pk=mes_pk, sender=self.request.user)
-
+        try:
+            queryset = Message.objects.get(pk=mes_pk, sender=self.request.user)
+            return queryset
+        except Message.DoesNotExist:
+            raise exceptions.PermissionDenied
 
         # pkobject.queryset = Message.objects.filter(pk=pk)
         # can_edit = Message.objects.get(sender=self.request.user).first()
@@ -72,3 +74,13 @@ class MessageDeleteView(LoginRequiredMixin, generics.DestroyAPIView):
             Q(sender=self.request.user) | Q(sender=self.request.user.buddy)
         ).order_by('time_sent')
         return queryset
+
+    def get_object(self):
+        mes_pk = self.kwargs.get('pk')
+
+        try:
+            queryset = Message.objects.get(pk=mes_pk, sender=self.request.user)
+            return queryset
+        except Message.DoesNotExist:
+            raise exceptions.PermissionDenied
+
