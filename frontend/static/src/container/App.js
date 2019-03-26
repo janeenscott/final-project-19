@@ -146,9 +146,11 @@ class App extends Component {
 
         return (
             <div className="App">
-                 <button>
-                    <a href="../profile">Go Back to Profile</a>
+                <form action="../profile">
+                 <button className="btn-redirect">
+                    Go Back to Profile
                 </button>
+                </form>
                 <h1>Let's talk!</h1>
                 {/*<h3>Not sure what to say?</h3>*/}
                 {/*<ul>*/}

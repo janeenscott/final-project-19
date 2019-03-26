@@ -54,6 +54,8 @@ html, body {
     font-family: system-ui;
     font-weight: 200;
     color: #3e5869;
+      /*background: #666666;*/
+
 }
 
 #root {
@@ -80,9 +82,9 @@ html, body {
 .message {
     /*margin: 15px 0;*/
     border: #5ea3d0 solid 2px;
-    margin: 7px 15% 7px 15%;
+    margin: 7px 25% 7px 25%;
     border-radius: 8px;
-
+    min-height: 500px;
 
 }
 
@@ -152,4 +154,35 @@ html, body {
 
 .send-message-form input::placeholder {
     color: black;
+}
+
+.editor{
+    /*width: 700px;*/
+    text-align: center;
+    border: #0a66b7 solid 2px;
+    margin: 7px 25% 7px 25%;
+    height: 1000px;
+    border-radius: 8px;
+
+}
+
+.btn-redirect {
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin: 10px;
+  border: 2px solid #fff;
+  color: #2dc997;
+}
+
+.btn-redirect:hover {
+  background: #2dc997;
+  border: 2px solid #2dc997;
+  color: #fff;
 }

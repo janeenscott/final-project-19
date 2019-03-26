@@ -4,31 +4,42 @@
     <!--==========================
     Hero Section
   ============================-->
-  <section id="hero">
-    <div class="hero-container">
-      <h1>Kind Regards</h1>
-      <h2>Helping to raise a generation of compassionate global citizens, one friendship at a time.</h2>
-{#      <a href="{% url 'users:login' %}" class="btn-get-started">Log In</a>#}
+    <section id="hero">
+        <div class="hero-container">
+            <h1>Kind Regards</h1>
+            <h2>Helping to raise a generation of compassionate global citizens, one friendship at a time.</h2>
+            {#      <a href="{% url 'users:login' %}" class="btn-get-started">Log In</a>#}
 
 
+            {#    <h2>{% block title %}Kind Regards{% endblock title %}</h2>#}
 
-{#    <h2>{% block title %}Kind Regards{% endblock title %}</h2>#}
-
-    {% if user.is_authenticated %}
+            {% if user.is_authenticated %}
 
 
-        <h3>Hi {{ user.first_name }}!</h3>
-        <p><a href="{% url 'logout' %}">Log Out</a></p>
+                <h3>Hi {{ user.first_name }}!</h3>
+                <form action="{% url 'logout' %}">
+                    <button class="btn-get-started">
+                        Logout
+                    </button>
+                    {#            <a href="{% url 'logout' %}">Log Out</a></p>#}
+                </form>
 
-    {% else %}
+            {% else %}
 
-        <p>Welcome to Kind Regards! Please log in.</p>
-        <a href="{% url 'users:login' %}">Login</a>
-        <a href="{% url 'users:signup' %}">Or create an account</a>
+                <p>Welcome to Kind Regards! Please log in.</p>
+                <form action="{% url 'users:login' %}">
+                    <button class="btn-get-started">
+                        Logout
+                    </button>
+                    {#            <a href="{% url 'logout' %}">Log Out</a></p>#}
+                </form>
 
-    {% endif %}
-      </div>
-  </section><!-- #hero -->
+                {#        <a href="{% url 'users:login' %}">Login</a>#}
+                <a href="{% url 'users:signup' %}">Or create an account</a>
+
+            {% endif %}
+        </div>
+    </section><!-- #hero -->
 
     <p>New user signup is open during August and September.</p>
     <p>You will receive your pen pal the first week of October!</p>

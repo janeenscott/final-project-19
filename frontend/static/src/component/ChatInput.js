@@ -57,8 +57,7 @@ class ChatInput extends Component{
                 editorClassName="editorClassName"
                 onEditorStateChange={this.onEditorStateChange}
             />
-
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" className="btn btn-redirect">
                         Send
                     </button>
              </div>
