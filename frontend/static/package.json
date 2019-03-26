@@ -13,6 +13,7 @@
     "react-dom": "^16.8.4",
     "react-draft": "0.0.0",
     "react-draft-wysiwyg": "^1.13.2",
+    "react-moment": "^0.8.4",
     "react-scripts": "2.1.8",
     "wysiwyg": "^2.0.0"
   },

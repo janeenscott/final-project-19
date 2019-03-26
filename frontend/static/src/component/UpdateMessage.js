@@ -9,7 +9,7 @@ class UpdateMessage extends Component {
         // let plainText = 'What up dude'
         // let content = ContentState.createFromText(plainText);
         this.state = {
-            messageText: '',
+            // messageText: '',
             editorState: null
         };
         this.handleSubmit = this.handleSubmit.bind(this);

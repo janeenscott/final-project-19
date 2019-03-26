@@ -1,42 +1,93 @@
+/*--------------------------
+Base Styles
+--------------------------*/
+
+body {
+    /*background: #666666;*/
+    color: #FFFFFF;
+    font-family: "Open Sans", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+    margin: 0 0 20px 0;
+    padding: 0;
+}
+
+
+
+a {
+    color: #c7ffff;;
+}
+
+a:hover, a:active, a:focus {
+    color: #7bffff;
+    outline: none;
+    text-decoration: none;
+}
+
+p {
+    padding: 0;
+    margin: 0 0 30px 0;
+}
+
+.message-list{
+    background: #666666;
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+}
+
+h4 {
+    color: #2dc997;
+}
+
+/*------------------------
+Message App Styling
+--------------------------*/
+
+
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+    animation: App-logo-spin infinite 20s linear;
+    height: 40vmin;
+    pointer-events: none;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
-img{
+img {
     width: 100%;
 }
-.message-list{
-  list-style-type: none;
+
+.message-list {
+    list-style-type: none;
 }
 
 :root {
@@ -54,7 +105,7 @@ html, body {
     font-family: system-ui;
     font-weight: 200;
     color: #3e5869;
-      /*background: #666666;*/
+    /*background: #666666;*/
 
 }
 
@@ -84,7 +135,9 @@ html, body {
     border: #5ea3d0 solid 2px;
     margin: 7px 25% 7px 25%;
     border-radius: 8px;
-    min-height: 500px;
+    min-height: 100px;
+    text-align: left;
+
 
 }
 
@@ -113,6 +166,7 @@ html, body {
     padding: 4px 8px;
     border-radius: 8px;
 }
+
 .message div:nth-child(4) {
     /*background: var(--main-color);*/
     /*color: var(--secondary-color);*/
@@ -156,37 +210,37 @@ html, body {
     color: black;
 }
 
-.editor{
+.editor {
     /*width: 700px;*/
     text-align: center;
     border: #0a66b7 solid 2px;
     margin: 7px 25% 7px 25%;
-    height: 1000px;
+    mix-height: 200px;
     border-radius: 8px;
 
 }
 
 .btn-redirect {
-  font-family: "Poppins", sans-serif;
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: 16px;
-  letter-spacing: 1px;
-  display: inline-block;
-  padding: 8px 28px;
-  border-radius: 50px;
-  transition: 0.5s;
-  margin: 10px;
-  border: 2px solid #fff;
-  color: #2dc997;
+    font-family: "Poppins", sans-serif;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 8px 28px;
+    border-radius: 50px;
+    transition: 0.5s;
+    margin: 10px;
+    border: 2px solid #fff;
+    color: #2dc997;
 }
 
 .btn-redirect:hover {
-  background: #2dc997;
-  border: 2px solid #2dc997;
-  color: #fff;
+    background: #2dc997;
+    border: 2px solid #2dc997;
+    color: #fff;
 }
 
-.unauthorized{
+.unauthorized {
     display: none;
 }
