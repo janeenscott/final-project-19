@@ -26,23 +26,22 @@
         <nav id="nav-menu-container">
             <ul class="nav-menu">
                 <li class="nav">
+                    <p class="logo">Kind Regards</p>
+                </li>
+                {% if request.user.is_authenticated %}
+                <li class="nav">
                     <a href="{% url 'buddies:index' %}">Home</a>
                 </li>
                 <li class="nav">
                     <a href="{% url 'buddies:profile' %}">Profile</a>
                 </li>
+                    {% if request.user.buddy %}
                 <li class="nav">
                     <a href="{% url 'frontend:chat' %}">Chat</a>
                 </li>
-                <!--if/else statement to switches login and logout
-                 depending on user authentication status-->
-                {% if request.user.is_authenticated %}
+                        {% endif %}
                     <li class="nav">
                         <a href="{% url 'logout' %}">Logout</a>
-                    </li>
-                {% else %}
-                    <li class="nav">
-                        <a href="{% url 'users:login' %}">Login</a>
                     </li>
                 {% endif %}
             </ul>
