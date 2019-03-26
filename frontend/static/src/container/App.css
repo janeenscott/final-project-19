@@ -186,3 +186,7 @@ html, body {
   border: 2px solid #2dc997;
   color: #fff;
 }
+
+.unauthorized{
+    display: none;
+}

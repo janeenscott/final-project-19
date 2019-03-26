@@ -12,12 +12,15 @@ class ChatMessages extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // messages:  [
-            //     {messageText: '', sender: '', timeSent: ''},
-            //     ]
+          userAuthorized: false
         }
 
     }
+
+    // hideIfUnauthorized = (user) =>{
+    //     if (user = self.request.user);
+    //     {userAuthorized: true}
+    // };
 
     convertMessageFromJSONToText = (text) => {
         let x;
@@ -50,8 +53,8 @@ class ChatMessages extends Component {
                             <Listgroup.Item>
                                 {message['time_sent']}
                             </Listgroup.Item>
-                            <Listgroup.Item>
 
+                            <Listgroup.Item className="unauthorized">
                                 <p className='edit' onClick={() => this.props.handleEdit(message)}>&#9998;</p>
                                 <p className='delete' onClick={() => this.props.deleteMessage(message)}>🗑️</p>
                             </Listgroup.Item>

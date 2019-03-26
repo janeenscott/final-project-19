@@ -18,11 +18,11 @@ body {
 }
 
 a {
-  color: #2dc997;
+  color: #c7ffff;;
 }
 
 a:hover, a:active, a:focus {
-  color: #2dca98;
+  color: #7bffff;
   outline: none;
   text-decoration: none;
 }
@@ -46,9 +46,6 @@ h1{
 h4{
   color: #2dc997;
 }
-p{
-  color: #2dc997;
-}
 
 /*.background-image {*/
     /*background-image: url("../images/background3.jpg");*/
@@ -63,7 +60,12 @@ p{
 
 .nav {
     display: inline;
+  color: #00CDFF;
 }
+
+/*.nav-menu-container{*/
+  /*color: #00CDFF;*/
+/*}*/
 
 .topic {
     display: block;
