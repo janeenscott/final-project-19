@@ -71,75 +71,17 @@ Message App Styling
 
 .App {
     text-align: center;
-    background-image: url(../images/message-bg-1.jpg);
-
-}
-#bg {
-  position: fixed;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-}
-#bg img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  min-width: 50%;
-  min-height: 50%;
-}
-
-.App-logo {
-    animation: App-logo-spin infinite 20s linear;
-    height: 40vmin;
-    pointer-events: none;
-}
-
-.App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-}
-
-.App-link {
-    color: #61dafb;
-}
-
-/*@keyframes App-logo-spin {*/
-/*from {*/
-/*transform: rotate(0deg);*/
-/*}*/
-/*to {*/
-/*transform: rotate(360deg);*/
-/*}*/
-/*}*/
-
-img {
-    width: 100%;
-}
+    background: url(../images/message-bg-1.jpg) no-repeat center center fixed;
+    background-size: cover;
 
 
-:root {
-    /*--main-color: #5ea3d0;*/
-    /*--secondary-color: white;*/
-    /*--main-text-color: #3e5869;*/
-    /*--secondary-text-color: #b0c7d6;*/
-    /*--send-message-form: #F5F5F5;*/
 }
+
 
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: system-ui;
     font-weight: 200;
     color: #3e5869;
     /*background: #666666;*/
@@ -150,9 +92,6 @@ html, body {
     height: 100%;
 }
 
-.app {
-    height: calc(100% - 100px);
-}
 
 .title {
     display: flex;
@@ -165,15 +104,18 @@ html, body {
     text-align: center;
 }
 
+
 .message-list {
+    box-sizing: border-box;
+    padding: 0 0 0 6px;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    background: white;
+    margin: 7px 25% 7px 25%;
     list-style-type: none;
-    /*background: #666666;*/
-    /*opacity: 0.1;*/
-        border: #5ea3d0 solid 2px;
-        margin: 7px 25% 7px 25%;
-
-
 }
+
 
 .message {
     /*margin: 15px 0;*/
@@ -183,6 +125,7 @@ html, body {
     min-height: 100px;
     text-align: left;
     background: #fff;
+    padding: 25px;
     /*opacity: 1;*/
     /*z-index: 100;*/
 
@@ -224,46 +167,14 @@ html, body {
     /*text-align: right;*/
 }
 
-.message-list {
-    box-sizing: border-box;
-    padding: 0 0 0 6px;
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    overflow: scroll;
-    background: white;
-}
 
-.send-message-form {
-    background: var(--send-message-form);
-    display: flex;
-    box-sizing: border-box;
-    height: 60px;
-}
-
-.send-message-form input {
-    width: 100%;
-    padding: 15px 10px;
-    border: none;
-    margin: 0;
-    background: var(--send-message-form);
-    font-weight: 200;
-}
-
-.send-message-form input:focus {
-    outline-width: 0;
-}
-
-.send-message-form input::placeholder {
-    color: black;
-}
 
 .editor {
     /*width: 700px;*/
     text-align: center;
     border: #0a66b7 solid 2px;
     margin: 7px 25% 7px 25%;
-    mix-height: 200px;
+    min-height: 200px;
     border-radius: 8px;
 
 }
@@ -306,6 +217,11 @@ div.DraftEditor-editorContainer {
     background-color: #fff;
 }
 
+div.DraftEditor-root {
+    margin-top: 40px;
+    background-color: #fff;
+}
+
 
 /*toolbar in editor*/
 
@@ -325,4 +241,5 @@ div.toolbar button {
     margin-right: 4px;
     background-color: black;
     color: white;
+
 }
