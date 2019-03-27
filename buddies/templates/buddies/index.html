@@ -4,7 +4,8 @@
     <!--==========================
     Hero Section
   ============================-->
-    <section id="hero">
+   <div>
+    <div id="hero">
         <div class="hero-container">
             <h1>Kind Regards</h1>
             <h2>Helping to raise a generation of compassionate global citizens, one friendship at a time.</h2>
@@ -29,7 +30,7 @@
                 <p>Welcome to Kind Regards! Please log in.</p>
                 <form action="{% url 'users:login' %}">
                     <button class="btn-get-started">
-                        Login
+                        <h4>Login</h4>
                     </button>
                     {#            <a href="{% url 'logout' %}">Log Out</a></p>#}
                 </form>
@@ -39,10 +40,13 @@
 
             {% endif %}
         </div>
-    </section><!-- #hero -->
+    </div><!-- #hero -->
 
-    <p>New user signup is open during August and September.</p>
-    <p>You will receive your pen pal the first week of October!</p>
-
-
+    <div class="signup-info">
+        <div>
+            <h4>New user signup is open during August and September.</h4>
+            <h4>You will receive your pen pal the first week of October!</h4>
+        </div>
+    </div>
+</div>
 {% endblock content %}

@@ -9,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../../static/css/styles.css">
     {#    <link rel="stylesheet" type="text/css" href="{% static 'hijack/hijack-styles.scss' %}" />#}
@@ -18,40 +19,42 @@
 </head>
 <body>
 <header id="header">
-    <div class="container">
+    <div>
 
 
         {#<h1>Better World Buddies</h1>#}
 
-        <nav id="nav-menu-container">
+        <nav id="navbar-nav">
             <ul class="nav-menu">
                 <li class="nav">
-                    <p class="logo">Kind Regards</p>
+                    <p id="logo">Kind Regards</p>
                 </li>
                 {% if request.user.is_authenticated %}
-                <li class="nav">
-                    <a href="{% url 'buddies:index' %}">Home</a>
-                </li>
-                <li class="nav">
-                    <a href="{% url 'buddies:profile' %}">Profile</a>
-                </li>
+                    <li class="nav">
+                        <a href="{% url 'buddies:index' %}">Home</a>
+                    </li>
+                    <li class="nav">
+                        <a href="{% url 'buddies:profile' %}">Profile</a>
+                    </li>
                     {% if request.user.buddy %}
-                <li class="nav">
-                    <a href="{% url 'frontend:chat' %}">Chat</a>
-                </li>
-                        {% endif %}
+                        <li class="nav">
+                            <a href="{% url 'frontend:chat' %}">Chat</a>
+                        </li>
+                    {% endif %}
                     <li class="nav">
                         <a href="{% url 'logout' %}">Logout</a>
                     </li>
                 {% endif %}
             </ul>
         </nav>
+    </div>
+</header>
 
 
-        <div class="background-image container-fluid">
-            {% block content %}
-            {% endblock content %}
-        </div>
+{#        <div class="background-image">#}
+{% block content %}
+{% endblock content %}
+{#        </div>#}
 
 
 </body>

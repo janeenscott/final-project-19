@@ -1,23 +1,21 @@
 /*--------------------------------------------------------------
 # Base Settings
 --------------------------------------------------------------*/
-html {
+html, body {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   background: #666666;
   color: #FFFFFF;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 body h1, body h2, body h3, body h4, body h5, body h6 {
   font-weight: 400;
   margin: 0 0 20px 0;
   padding: 0;
-}
-body .nav {
-  display: inline;
-  color: #00CDFF;
 }
 body a {
   color: #c7ffff;
@@ -31,19 +29,26 @@ body p {
   padding: 0;
   margin: 0 0 30px 0;
 }
-body .logo {
+body #logo {
   font-family: "Pacifico", cursive;
   font-size: 24px;
   color: #fff;
   display: inline;
-  padding: 0;
+  padding: 0 25px 0 0;
   margin: 0;
+  font-weight: 100;
 }
 body h1 {
   font-family: "Pacifico", cursive;
 }
+body h3 {
+  font-family: "Pacifico", cursive;
+  font-weight: lighter;
+}
 body h4 {
-  color: #2dc997;
+  color: #c7ffff;
+  text-align: center;
+  margin: 30px;
 }
 
 .topic {
@@ -56,6 +61,11 @@ body h4 {
   background: white;
 }
 
+.nav {
+  display: inline;
+  color: #00CDFF;
+}
+
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
@@ -65,16 +75,6 @@ body h4 {
   background: url(../images/background2.jpg) top center fixed;
   background-size: cover;
   position: relative;
-}
-#hero #hero::before {
-  content: "";
-  background-color: rgba(0, 0, 0, 0.6);
-  position: absolute;
-  bottom: 0;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: block;
 }
 #hero .hero-container {
   position: absolute;
@@ -87,6 +87,12 @@ body h4 {
   align-items: center;
   flex-direction: column;
   text-align: center;
+}
+#hero h1 {
+  padding: 15px;
+}
+#hero h2 {
+  padding: 35px;
 }
 @media (min-width: 1024px) {
   #hero .hero-container {
@@ -106,7 +112,7 @@ body h4 {
   }
   #hero h1 {
     margin: 30px 0 10px 0;
-    font-size: 48px;
+    font-size: 64px;
     font-weight: 100;
     line-height: 56px;
     /*text-transform: uppercase;*/
@@ -131,28 +137,59 @@ body h4 {
     margin-bottom: 30px;
   }
 }
-@media (min-width: 1024px) {
-  #hero .btn-get-started {
-    font-family: "Poppins", sans-serif;
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: 16px;
-    letter-spacing: 1px;
-    display: inline-block;
-    padding: 8px 28px;
-    border-radius: 50px;
-    transition: 0.5s;
-    margin: 10px;
-    border: 2px solid #fff;
-    color: #2dc997;
-  }
+
+.btn-get-started {
+  font-family: "Quicksand", sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin: 10px;
+  border: 2px solid #fff;
+  color: #666666;
 }
-@media (min-width: 1024px) {
-  #hero .btn-get-started:hover {
-    background: #2dc997;
-    border: 2px solid #2dc997;
-    color: #fff;
-  }
+.btn-get-started h4 {
+  font-weight: bolder;
+}
+
+.btn-get-started:hover {
+  background: #7bffff;
+  border: 2px solid #7bffff;
+  color: #666666;
+}
+
+#hero:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.hero-container {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.signup-info {
+  border: #c7ffff;
 }
 
 /*--------------------------------------
@@ -286,6 +323,11 @@ Profile Page
   /*border: red solid 2px;*/
   width: auto;
   height: 70px;
+}
+
+.main {
+  position: relative;
+  background: #FFFFFF;
 }
 
 /*# sourceMappingURL=styles.css.map */
