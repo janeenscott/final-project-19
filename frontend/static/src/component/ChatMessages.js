@@ -12,7 +12,7 @@ class ChatMessages extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          // userAuthorized: false
+            // userAuthorized: false
         };
 
         // const moment = require('moment');
@@ -26,7 +26,6 @@ class ChatMessages extends Component {
     //     if (user = self.request.user);
     //     {userAuthorized: true}
     // };
-
 
 
     convertMessageFromJSONToText = (text) => {
@@ -53,33 +52,39 @@ class ChatMessages extends Component {
 
         return (
             <div className='message-list'>
-                {this.props.messages.map(message => {
-                    const dateToFormat = message['time_sent'];
-                    return (
-                        <Listgroup className="message" key={message.id}>
-                            <Listgroup.Item>
-                                {message.sender['first_name']}
-                            </Listgroup.Item>
-                            <Listgroup.Item
-                                dangerouslySetInnerHTML={{__html: this.convertMessageFromJSONToText(message['message_text'])}}>
-                            </Listgroup.Item>
-                            <Listgroup.Item>
-                                <Moment>{dateToFormat}</Moment>
-                            </Listgroup.Item>
+                <div>
+                    {this.props.messages.map(message => {
+                        const dateToFormat = message['time_sent'];
+                        return (
 
-                            <Listgroup.Item className="unauthorized">
-                                <p className='edit' onClick={() => this.props.handleEdit(message)}>&#9998;</p>
-                                <p className='delete' onClick={() => this.props.deleteMessage(message)}>🗑️</p>
-                            </Listgroup.Item>
+                                <Listgroup className="message" key={message.id}>
+                                    <Listgroup.Item>
+                                        {message.sender['first_name']}
+                                    </Listgroup.Item>
+                                    <Listgroup.Item
+                                        dangerouslySetInnerHTML={{__html: this.convertMessageFromJSONToText(message['message_text'])}}>
+                                    </Listgroup.Item>
+                                    <Listgroup.Item>
+                                        <Moment format="MMMM Do YYYY, h:mm a">
+                                            {dateToFormat}
+                                        </Moment>
+                                    </Listgroup.Item>
 
-                            <br/>
-                        </Listgroup>
-                    )
-                })
+                                    <Listgroup.Item className="unauthorized">
+                                        <p className='edit' onClick={() => this.props.handleEdit(message)}>&#9998;</p>
+                                        <p className='delete' onClick={() => this.props.deleteMessage(message)}>🗑️</p>
+                                    </Listgroup.Item>
+                                    <br/>
+                                </Listgroup>
+
+
+                        )
+                    })
+                    }
+                     </div>
+                </div>
+                )
                 }
-            </div>
-        )
-    }
-}
+                }
 
-export default ChatMessages;
+                export default ChatMessages;

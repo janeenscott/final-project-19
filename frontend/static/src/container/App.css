@@ -5,7 +5,7 @@ Base Styles
 body {
     /*background: #666666;*/
     color: #FFFFFF;
-    font-family: "Open Sans", sans-serif;
+    font-family: 'Quicksand', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -14,7 +14,31 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0;
 }
 
+.topic {
+    background-color: #fff;
+    margin: 30px;
+    list-style: none;
+    font-size: 24px;
+}
 
+.convo-topics {
+    background-color: #fff;
+    padding: 15px;
+    border: #5ea3d0 solid 2px;
+    margin: 7px 25% 7px 25%;
+    border-radius: 8px;
+
+
+}
+
+/*.title{*/
+/*display: inline-block;*/
+/*}*/
+
+.is-editing-false {
+    /*opacity: 0.1;*/
+    z-index: -1;
+}
 
 a {
     color: #c7ffff;;
@@ -31,9 +55,6 @@ p {
     margin: 0 0 30px 0;
 }
 
-.message-list{
-    background: #666666;
-}
 
 h1 {
     font-family: 'Pacifico', cursive;
@@ -50,6 +71,8 @@ Message App Styling
 
 .App {
     text-align: center;
+    background-image: url(../images/message-bg-1.jpg);
+
 }
 
 .App-logo {
@@ -73,22 +96,19 @@ Message App Styling
     color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
+/*@keyframes App-logo-spin {*/
+/*from {*/
+/*transform: rotate(0deg);*/
+/*}*/
+/*to {*/
+/*transform: rotate(360deg);*/
+/*}*/
+/*}*/
 
 img {
     width: 100%;
 }
 
-.message-list {
-    list-style-type: none;
-}
 
 :root {
     --main-color: #5ea3d0;
@@ -130,6 +150,12 @@ html, body {
     text-align: center;
 }
 
+.message-list {
+    list-style-type: none;
+    /*background: #666666;*/
+    /*opacity: 0.1;*/
+}
+
 .message {
     /*margin: 15px 0;*/
     border: #5ea3d0 solid 2px;
@@ -137,7 +163,9 @@ html, body {
     border-radius: 8px;
     min-height: 100px;
     text-align: left;
-
+    background: #fff;
+    /*opacity: 1;*/
+    /*z-index: 100;*/
 
 }
 
@@ -153,7 +181,7 @@ html, body {
 .message div:nth-child(2) {
     /*background: var(--main-color);*/
     /*color: var(--secondary-color);*/
-    display: block;
+    /*display: block;*/
     padding: 4px 8px;
     border-radius: 8px;
 }
@@ -162,18 +190,20 @@ html, body {
 .message div:nth-child(3) {
     /*background: var(--main-color);*/
     /*color: var(--secondary-color);*/
-    display: inline;
+    /*display: inline;*/
     padding: 4px 8px;
     border-radius: 8px;
 }
 
+/*icons*/
 .message div:nth-child(4) {
     /*background: var(--main-color);*/
     /*color: var(--secondary-color);*/
-    display: inline-block;
+    display: inline-flex;
     padding: 4px 8px;
     border-radius: 8px;
     /*border: red solid 1px;*/
+    /*text-align: right;*/
 }
 
 .message-list {
@@ -221,7 +251,7 @@ html, body {
 }
 
 .btn-redirect {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Quicksand', sans-serif;
     text-transform: uppercase;
     font-weight: 500;
     font-size: 16px;
@@ -231,16 +261,50 @@ html, body {
     border-radius: 50px;
     transition: 0.5s;
     margin: 10px;
-    border: 2px solid #fff;
-    color: #2dc997;
+    border: 2px solid #666666;
+    color: #666666;
+    /*float: left;*/
 }
 
 .btn-redirect:hover {
-    background: #2dc997;
-    border: 2px solid #2dc997;
-    color: #fff;
+    background: #7bffff;
+    border: 2px solid #7bffff;
+    color: #666666;
 }
 
 .unauthorized {
     display: none;
+}
+
+/*editor*/
+
+/*input box in editor*/
+div.rdw-editor-main {
+    background-color: #fff;
+}
+
+div.DraftEditor-editorContainer {
+    margin-top: 40px;
+    background-color: #fff;
+}
+
+
+/*toolbar in editor*/
+
+div.toolbar {
+    position: relative;
+    width: 80%;
+    background-color: lightsteelblue;
+    padding: 10px 20px;
+    margin: auto;
+    top: 45px;
+    text-align: right;
+}
+
+div.toolbar button {
+    border: 1px solid black;
+    padding: 5px;
+    margin-right: 4px;
+    background-color: black;
+    color: white;
 }

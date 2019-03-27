@@ -151,20 +151,20 @@ class App extends Component {
                     Go Back to Profile
                 </button>
                 </form>
-                <h1>Let's talk!</h1>
-                {/*<h3>Not sure what to say?</h3>*/}
-                {/*<ul>*/}
-                {/*<li className="topic">Convo topic #1</li>*/}
-                {/*<li className="topic">Convo topic #2</li>*/}
-                {/*<li className="topic">Convo topic #3</li>*/}
-                {/*<li className="topic">Convo topic #4</li>*/}
-                {/*</ul>*/}
+                <h1>Messenger</h1>
+                <h3>Not sure what to say?</h3>
+                <ul className='convo-topics'>
+                <li className="topic">Tell me about the people that live in your house.</li>
+                <li className="topic">How many students are in your class? In your school?</li>
+                <li className="topic">What sort of elective course are you taking? </li>
+                <li className="topic">What's your favorite home-cooked meal?</li>
+                </ul>
 
 
                 {isEditing ? (
                     <UpdateMessage updateMessage={this.updateMessage} message={this.state.isEditing}/>
                 ) : (
-                    <div>
+                    <div className='is-editing-false'>
                         <ChatMessages messages={this.state.messages} deleteMessage={this.deleteMessage} handleEdit={this.handleEdit}/>
                         <ChatInput sendMessage={this.sendMessage}/>
                     </div>
