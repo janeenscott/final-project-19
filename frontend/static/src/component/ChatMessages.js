@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import '../container/App.css';
 import {stateToHTML} from 'draft-js-export-html';
-import {convertFromRaw, EditorState} from 'draft-js';
+import {stateFromHTML} from "draft-js-import-html";
+import {convertFromRaw, convertToRaw, EditorState, ContentState} from 'draft-js';
 import Listgroup from 'react-bootstrap/ListGroup'
 
 
@@ -39,8 +40,14 @@ class ChatMessages extends Component {
         } catch (e) {
             // x = stateToHTML(convertFromRaw(text));
             // this fires when you pull data from the server
-            x = text.blocks[0].text;
-            console.log('catch me here', x);
+            // x = stateFromHTML(convertFromRaw(JSON.parse(text)));
+
+            // let test = ContentState.createFromBlockArray(text.blocks)
+            // console.log('testing here', test)
+
+            x = stateToHTML(convertFromRaw(text));
+            // x = text.blocks[0].text;
+            console.log('blocks[0].text', x);
         }
 
         console.log('what are we returning', x);
