@@ -58,7 +58,6 @@ class ChatMessages extends Component {
     render() {
 
         return (
-            <div className='message-list'>
                 <div>
                     {this.props.messages.map(message => {
                         const dateToFormat = message['time_sent'];
@@ -89,7 +88,6 @@ class ChatMessages extends Component {
                     })
                     }
                      </div>
-                </div>
                 )
                 }
                 }

@@ -74,6 +74,23 @@ Message App Styling
     background-image: url(../images/message-bg-1.jpg);
 
 }
+#bg {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+}
+#bg img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 50%;
+  min-height: 50%;
+}
 
 .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -142,8 +159,6 @@ html, body {
     justify-content: center;
     align-items: center;
     height: 40px;
-    color: var(--secondary-color);
-    background: var(--main-color);
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -176,7 +191,6 @@ html, body {
 /*username*/
 .message div:nth-child(1) {
     font-size: 24px;
-    color: var(--main-text-color);
     opacity: 0.9;
     margin-bottom: 6px;
 }
