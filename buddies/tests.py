@@ -2,14 +2,14 @@ from django.test import TestCase
 from django.urls import reverse
 
 
-class BuddiesTests(TestCase):
+class TestViews(TestCase):
 
-    def buddies_index(self):
+    def test_index(self):
         view_url = reverse('buddies:index')
         response = self.client.get(view_url)
         self.assertEqual(response.status_code, 200)
 
-    def buddies_profile(self):
-        view_url = reverse('buddies:profile')
+    def test_profile(self):
+        view_url = reverse('login')
         response = self.client.get(view_url)
         self.assertEqual(response.status_code, 200)
