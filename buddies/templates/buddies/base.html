@@ -29,13 +29,13 @@
         <nav id="navbar-nav">
             <ul class="nav-menu">
                 <li class="nav">
-                    <p id="logo">Kind Regards</p>
+                    <a href="{% url 'buddies:index' %}"><p id="logo">Kind Regards</p></a>
                 </li>
                 {% if request.user.is_authenticated %}
                     <li class="nav">
                         <a href="{% url 'buddies:index' %}">Home</a>
                     </li>
-                     <li class="nav">
+                    <li class="nav">
                         <a href="{% url 'buddies:about' %}">About</a>
                     </li>
                     <li class="nav">

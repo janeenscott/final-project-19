@@ -432,6 +432,12 @@ Profile Page
   width: 100%;
 }
 
+.score-wrapper-single {
+  margin: 25px;
+  text-align: center;
+  width: 100%;
+}
+
 .score {
   //float: left;
   width: 40%;
@@ -462,6 +468,10 @@ Profile Page
   background: #FFFFFF;
 }
 
+.city-center {
+  text-align: center;
+}
+
 
 /*-------------------------
 About Page
@@ -471,7 +481,7 @@ About Page
   //max-height: 300px;
 }
 
-.about-wrapper{
+.about-wrapper {
   position: absolute;
 }
 
@@ -481,6 +491,36 @@ About Page
   position: relative;
 }
 
-#mission{
+#mission {
   margin-bottom: 50px;
+}
+
+/*---------------------
+Login Page
+ --------------------*/
+
+#login {
+  text-align: left;
+}
+
+.credentials-wrapper {
+  margin: 25px;
+}
+
+.log-btn {
+  float: left;
+  margin-top: 10px;
+}
+
+.create-account {
+  float: left;
+  //margin-left: 20px;
+}
+
+/*---------------------
+Signup Page
+ --------------------*/
+
+.login-link {
+  margin-top: 10px;
 }

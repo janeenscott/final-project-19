@@ -4,49 +4,51 @@
     <!--==========================
     Hero Section
   ============================-->
-   <div>
-    <div id="hero">
-        <div class="hero-container">
-            <h1>Kind Regards<i class="far fa-heart"></i></h1>
-            <h2>Helping to raise a generation of compassionate global citizens, one friendship at a time.</h2>
-            {#      <a href="{% url 'users:login' %}" class="btn-get-started">Log In</a>#}
+    <div>
+        <div id="hero">
+            <div class="hero-container">
+                <h1>Kind Regards<i class="far fa-heart"></i></h1>
+                <h2>Helping to raise a generation of compassionate global citizens, one friendship at a time.</h2>
+                {#      <a href="{% url 'users:login' %}" class="btn-get-started">Log In</a>#}
 
 
-            {#    <h2>{% block title %}Kind Regards{% endblock title %}</h2>#}
+                {#    <h2>{% block title %}Kind Regards{% endblock title %}</h2>#}
 
-            {% if user.is_authenticated %}
+                {% if user.is_authenticated %}
 
 
-                <h3>Hi {{ user.first_name }}!</h3>
-                <form action="{% url 'logout' %}">
-                    <button class="btn-get-started">
-                        Logout
-                    </button>
-                    {#            <a href="{% url 'logout' %}">Log Out</a></p>#}
-                </form>
+                    <h3>Hi {{ user.first_name }}!</h3>
+                    <form action="{% url 'logout' %}">
+                        <button class="btn-get-started">
+                            Logout
+                        </button>
+                        {#            <a href="{% url 'logout' %}">Log Out</a></p>#}
+                    </form>
 
-            {% else %}
+                {% else %}
 
-                <p>Welcome to Kind Regards! Please log in.</p>
-                <form action="{% url 'users:login' %}">
-                    <button class="btn-get-started">
-                        Login
-                    </button>
-                    {#            <a href="{% url 'logout' %}">Log Out</a></p>#}
-                </form>
+                    <p>Welcome to Kind Regards! Please log in.</p>
+                    <form action="{% url 'users:login' %}">
+                        <button class="btn-get-started">
+                            Login
+                        </button>
+                        {#            <a href="{% url 'logout' %}">Log Out</a></p>#}
+                    </form>
 
-                {#        <a href="{% url 'users:login' %}">Login</a>#}
-                <a href="{% url 'users:signup' %}">Or create an account</a>
+                    {#        <a href="{% url 'users:login' %}">Login</a>#}
+                    <a href="{% url 'users:signup' %}">Or create an account</a>
 
-            {% endif %}
-        </div>
-    </div><!-- #hero -->
+                {% endif %}
+            </div>
+        </div><!-- #hero -->
+        {% if user.buddy == None %}
 
-    <div class="signup-info">
-        <div>
-            <h4>New user signup is open during August and September.</h4>
-            <h4>You will receive your pen pal the first week of October!</h4>
-        </div>
+            <div class="signup-info">
+                <div>
+                    <h4>New user signup is open during August and September.</h4>
+                    <h4>You will receive your pen pal the first week of October!</h4>
+                </div>
+            </div>
+        {% endif %}
     </div>
-</div>
 {% endblock content %}
