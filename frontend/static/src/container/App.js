@@ -163,14 +163,6 @@ class App extends Component {
                     </button>
                 </form>
                 <h1>Messenger</h1>
-                <h3>Not sure what to say?</h3>
-                <ul className='convo-topics'>
-                    <li className="topic">Tell me about the people that live in your house.</li>
-                    <li className="topic">How many students are in your class? In your school?</li>
-                    <li className="topic">What sort of elective course are you taking?</li>
-                    <li className="topic">What's your favorite home-cooked meal?</li>
-                </ul>
-
 
                 {isEditing ? (
                     <UpdateMessage updateMessage={this.updateMessage} message={this.state.isEditing}/>

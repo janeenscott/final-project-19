@@ -78,7 +78,7 @@ class ChatMessages extends Component {
 
                                     <Listgroup.Item className="unauthorized">
                                         <p className='edit' onClick={() => this.props.handleEdit(message)}>&#9998;</p>
-                                        <p className='delete' onClick={() => this.props.deleteMessage(message)}>🗑️</p>
+                                        <p className='delete' onClick={() => this.props.deleteMessage(message)}>&#x2718;</p>
                                     </Listgroup.Item>
                                     <br/>
                                 </Listgroup>

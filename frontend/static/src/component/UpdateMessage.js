@@ -75,7 +75,7 @@ class UpdateMessage extends Component {
                 className='message-input-form'
                 onSubmit={this.handleSubmit}
             >
-
+                <div className="editor">
                 <Editor
                     editorState={this.state.editorState}
                     onEditorStateChange={this.onEditorStateChange}
@@ -84,8 +84,9 @@ class UpdateMessage extends Component {
                     wrapperClassName="wrapperClassName"
                     editorClassName="editorClassName"
                 />
+                </div>
 
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="btn btn-redirect">
                     Save
                 </button>
             </form>
