@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import '../container/App.css';
-import {convertToRaw, EditorState, ContentState, convertFromRaw} from "draft-js";
+import {EditorState, ContentState, convertFromRaw, convertFromHTML} from "draft-js";
 import {Editor} from "react-draft-wysiwyg";
 import {stateToHTML} from "draft-js-export-html";
 
@@ -18,37 +18,29 @@ class UpdateMessage extends Component {
     }
 
 
-
     componentDidMount() {
-        // console.log('what is here', this.props.message.message_text);
 
-        // need try...catch because second update is throwing an error.
-        // after edit the object is stored differently so it can't be edited again
+        let plainText;
 
-        // let plainText;
-        //     try {
-        //         plainText = stateToHTML(convertFromRaw(JSON.parse(text)));
-        //         console.log('try plainText :', plainText);
-        //     }catch(e){
-        //         plainText = stateToHTML(convertFromRaw(text));
-        //         console.log('catch plainText :', plainText);
-        //     }
-        // console.log('plainText :', plainText);
-        //  return plainText;
+        try {
+            plainText = stateToHTML(convertFromRaw(JSON.parse(this.props.message.message_text)));
+        } catch (e) {
+            plainText = stateToHTML(convertFromRaw(this.props.message.message_text));
 
-        let plainText = this.props.message.message_text.blocks[0].text;
-        let content = ContentState.createFromText(plainText);
-        let editorState = EditorState.createWithContent(content);
-        editorState = EditorState.moveFocusToEnd(editorState);
+        }
+
+        let blocksFromHTML = convertFromHTML(plainText);
+        let editorState = ContentState.createFromBlockArray(
+            blocksFromHTML.contentBlocks,
+            blocksFromHTML.entityMap
+        );
+
+
+        editorState = EditorState.createWithContent(editorState);
         this.setState({
             editorState
         });
     }
-
-    //  onChange(editorState) {
-    //     console.log('onChange, editorState', editorState);
-    //     // this.setState({editorState});
-    // }
 
     onEditorStateChange = (editorState) => {
         console.log('editorState onEditorStateChange: ', editorState);
@@ -76,14 +68,14 @@ class UpdateMessage extends Component {
                 onSubmit={this.handleSubmit}
             >
                 <div className="editor">
-                <Editor
-                    editorState={this.state.editorState}
-                    onEditorStateChange={this.onEditorStateChange}
-                    // onChange={this.onChange}
-                    toolbarClassName="toolbarClassName"
-                    wrapperClassName="wrapperClassName"
-                    editorClassName="editorClassName"
-                />
+                    <Editor
+                        editorState={this.state.editorState}
+                        onEditorStateChange={this.onEditorStateChange}
+                        // onChange={this.onChange}
+                        toolbarClassName="toolbarClassName"
+                        wrapperClassName="wrapperClassName"
+                        editorClassName="editorClassName"
+                    />
                 </div>
 
                 <button type="submit" className="btn btn-redirect">
