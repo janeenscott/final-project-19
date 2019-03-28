@@ -22,6 +22,12 @@ body {
     padding: 0;
   }
 
+  .user-name {
+    font-family: 'Pacifico', cursive;
+    font-size: 68px;
+
+  }
+
 
   #navbar-nav {
     //color: red;
@@ -56,7 +62,8 @@ body {
   h1 {
     font-family: 'Pacifico', cursive;
   }
-  h3{
+
+  h3 {
     font-family: 'Pacifico', cursive;
     font-weight: lighter;
 
@@ -70,6 +77,7 @@ body {
 
 
 }
+
 
 .topic {
   display: block;
@@ -189,7 +197,7 @@ body {
   border: 2px solid #fff;
   color: #666666;
 
-  h4{
+  h4 {
     font-weight: bolder;
   }
 }
@@ -246,7 +254,9 @@ Profile Page
 .user-info {
   /*border: darkred solid 2px;*/
   text-align: center;
+
 }
+
 
 .page-header {
   height: 100vh;
@@ -257,44 +267,6 @@ Profile Page
   background-position: center center;
   background-size: cover;
 
-  .page-header-image {
-    position: absolute;
-    background-size: cover;
-    background-position: center center;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-  }
-
-  footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  }
-
-  .container {
-    height: 100%;
-    z-index: 1;
-    text-align: center;
-    position: relative;
-  }
-
-  .container > .content-center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    text-align: center;
-    padding: 0 15px;
-    color: #FFFFFF;
-    width: 100%;
-    max-width: 880px;
-  }
-
-  .category, .description {
-    color: rgba(255, 255, 255, 0.5);
-  }
 
   .page-header-small {
     height: 60vh;
@@ -316,11 +288,29 @@ Profile Page
     background-color: rgba(0, 0, 0, 0.5);
   }
 
-  .container {
-    z-index: 2;
-  }
 
 }
+
+.container {
+  height: 100%;
+  z-index: 1;
+  text-align: center;
+  position: relative;
+}
+
+.content-center {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 0 15px;
+  color: #FFFFFF;
+  width: 100%;
+  max-width: 880px;
+}
+
 
 .clear-filter:after, .clear-filter:before {
   display: none;
@@ -329,6 +319,7 @@ Profile Page
 .cc-profile-image {
   a {
     position: relative;
+
   }
 
   a:before {
@@ -375,12 +366,72 @@ Profile Page
 
 .page-header-image {
   background-image: url(../images/background3.jpg);
+  position: absolute;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  //height: 100%;
+  //z-index: -1;
+  height: 600px;
+
+
+}
+
+.page-header-image:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+
+.bottom-info {
+  //top: -50%;
+}
+
+#buddy{
+      margin: 0;
+    }
+
+#pair-announce {
+  font-size: 2rem;
+  margin: 5px;
+}
+
+.city-info{
+  font-size: 2rem;
+}
+
+.user-data{
+  font-family: 'Pacifico', cursive;
+  font-weight: 100;
+
 }
 
 .score-heading {
   /*border: red solid 2px;*/
   width: auto;
   height: 70px;
+}
+
+.score-wrapper-double {
+  margin: 25px;
+  text-align: center;
+  width: 100%;
+}
+
+.score {
+  float: left;
+  width: 100%;
+}
+
+@media screen and (max-width: 790px) {
+  .score {
+    width: 50%;
+  }
 }
 
 

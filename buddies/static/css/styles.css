@@ -17,6 +17,10 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
   margin: 0 0 20px 0;
   padding: 0;
 }
+body .user-name {
+  font-family: "Pacifico", cursive;
+  font-size: 68px;
+}
 body a {
   color: #c7ffff;
 }
@@ -217,40 +221,6 @@ Profile Page
   background-position: center center;
   background-size: cover;
 }
-.page-header .page-header-image {
-  position: absolute;
-  background-size: cover;
-  background-position: center center;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-.page-header footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-.page-header .container {
-  height: 100%;
-  z-index: 1;
-  text-align: center;
-  position: relative;
-}
-.page-header .container > .content-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  text-align: center;
-  padding: 0 15px;
-  color: #FFFFFF;
-  width: 100%;
-  max-width: 880px;
-}
-.page-header .category, .page-header .description {
-  color: rgba(255, 255, 255, 0.5);
-}
 .page-header .page-header-small {
   height: 60vh;
   max-height: 440px;
@@ -268,8 +238,25 @@ Profile Page
 .page-header .page-header:before {
   background-color: rgba(0, 0, 0, 0.5);
 }
-.page-header .container {
-  z-index: 2;
+
+.container {
+  height: 100%;
+  z-index: 1;
+  text-align: center;
+  position: relative;
+}
+
+.content-center {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 0 15px;
+  color: #FFFFFF;
+  width: 100%;
+  max-width: 880px;
 }
 
 .clear-filter:after, .clear-filter:before {
@@ -317,6 +304,39 @@ Profile Page
 
 .page-header-image {
   background-image: url(../images/background3.jpg);
+  position: absolute;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  height: 600px;
+}
+
+.page-header-image:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+#buddy {
+  margin: 0;
+}
+
+#pair-announce {
+  font-size: 2rem;
+  margin: 5px;
+}
+
+.city-info {
+  font-size: 2rem;
+}
+
+.user-data {
+  font-family: "Pacifico", cursive;
+  font-weight: 100;
 }
 
 .score-heading {
@@ -325,6 +345,22 @@ Profile Page
   height: 70px;
 }
 
+.score-wrapper-double {
+  margin: 25px;
+  text-align: center;
+  width: 100%;
+}
+
+.score {
+  float: left;
+  width: 100%;
+}
+
+@media screen and (max-width: 790px) {
+  .score {
+    width: 50%;
+  }
+}
 .main {
   position: relative;
   background: #FFFFFF;
