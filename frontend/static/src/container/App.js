@@ -7,6 +7,11 @@ import {stateToHTML} from 'draft-js-export-html';
 import moment from 'moment'
 import UpdateMessage from "../component/UpdateMessage";
 import Button from 'react-bootstrap/Button'
+// import { library } from '@fortawesome/fontawesome-svg-core'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faIgloo } from '@fortawesome/free-solid-svg-icons'
+//
+// library.add(faIgloo)
 
 
 class App extends Component {
@@ -72,11 +77,17 @@ class App extends Component {
         }).then((response) => {
             return response.json()
         }).then((post) => {
-            var messages = this.state.messages;
 
-            post.message_text = JSON.stringify(post.message_text);
+            // updated wed afternoon to replace below code
+            var messages = [...this.state.messages];
+            var index = messages.indexOf(this.state.isEditing);
+            messages[index].message_text = JSON.stringify(post.message_text);
 
-            messages.push(post);
+
+            // var messages = this.state.messages;
+            // post.message_text = JSON.stringify(post.message_text);
+            //
+            // messages.push(post);
 
 
             console.log('body: ', body);
@@ -92,20 +103,20 @@ class App extends Component {
     deleteMessage = (message) => {
         console.log('message: ', message);
         fetch(`/api/message/delete/${message.id}/`, {
-            method: "DELETE",
+                method: "DELETE",
             },
         )
             .then(response => {
-              console.log(response);
-            },
+                    console.log(response);
+                },
             )
             .then((messages) => {
-                let allMessages = this.state.messages;
-                let newMessages = allMessages.filter((currentMessage) => {
-                    return currentMessage.id !== message.id;
-                });
+                    let allMessages = this.state.messages;
+                    let newMessages = allMessages.filter((currentMessage) => {
+                        return currentMessage.id !== message.id;
+                    });
 
-                this.setState({messages: newMessages})
+                    this.setState({messages: newMessages})
                 }
             )
     };
@@ -119,7 +130,6 @@ class App extends Component {
         this.setState({isEditing: message});
 
     }
-
 
 
 // loads messages from api/message onto screen
@@ -146,18 +156,19 @@ class App extends Component {
 
         return (
             <div className="App">
+                <div className="app-wrapper">
                 <form action="../profile">
-                 <button className="btn-redirect">
-                    Go Back to Profile
-                </button>
+                    <button className="btn-redirect">
+                        Go Back to Profile
+                    </button>
                 </form>
                 <h1>Messenger</h1>
                 <h3>Not sure what to say?</h3>
                 <ul className='convo-topics'>
-                <li className="topic">Tell me about the people that live in your house.</li>
-                <li className="topic">How many students are in your class? In your school?</li>
-                <li className="topic">What sort of elective course are you taking? </li>
-                <li className="topic">What's your favorite home-cooked meal?</li>
+                    <li className="topic">Tell me about the people that live in your house.</li>
+                    <li className="topic">How many students are in your class? In your school?</li>
+                    <li className="topic">What sort of elective course are you taking?</li>
+                    <li className="topic">What's your favorite home-cooked meal?</li>
                 </ul>
 
 
@@ -165,14 +176,15 @@ class App extends Component {
                     <UpdateMessage updateMessage={this.updateMessage} message={this.state.isEditing}/>
                 ) : (
                     <div className='is-editing-false'>
-                        <ChatMessages messages={this.state.messages} deleteMessage={this.deleteMessage} handleEdit={this.handleEdit}/>
+                        <ChatMessages messages={this.state.messages} deleteMessage={this.deleteMessage}
+                                      handleEdit={this.handleEdit}/>
                         <ChatInput sendMessage={this.sendMessage}/>
                     </div>
                 )
                 }
                 {/*<Button onClick={location.href='buddies:profile'}/>*/}
 
-
+                </div>
             </div>
         );
     }

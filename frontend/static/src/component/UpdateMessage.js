@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import '../container/App.css';
-import {convertToRaw, EditorState, ContentState} from "draft-js";
+import {convertToRaw, EditorState, ContentState, convertFromRaw} from "draft-js";
 import {Editor} from "react-draft-wysiwyg";
+import {stateToHTML} from "draft-js-export-html";
 
 class UpdateMessage extends Component {
     constructor(props) {
@@ -17,7 +18,24 @@ class UpdateMessage extends Component {
     }
 
 
+
     componentDidMount() {
+        // console.log('what is here', this.props.message.message_text);
+
+        // need try...catch because second update is throwing an error.
+        // after edit the object is stored differently so it can't be edited again
+
+        // let plainText;
+        //     try {
+        //         plainText = stateToHTML(convertFromRaw(JSON.parse(text)));
+        //         console.log('try plainText :', plainText);
+        //     }catch(e){
+        //         plainText = stateToHTML(convertFromRaw(text));
+        //         console.log('catch plainText :', plainText);
+        //     }
+        // console.log('plainText :', plainText);
+        //  return plainText;
+
         let plainText = this.props.message.message_text.blocks[0].text;
         let content = ContentState.createFromText(plainText);
         let editorState = EditorState.createWithContent(content);
