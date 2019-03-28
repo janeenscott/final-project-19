@@ -72,7 +72,7 @@ body {
   h4 {
     color: #c7ffff;
     text-align: center;
-    margin: 30px;
+    margin: 15px;
   }
 
 
@@ -236,6 +236,13 @@ body {
 
 .signup-info {
   border: #c7ffff;
+  margin: 50px;
+}
+.mission{
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
+  font-size: 18px;
 }
 
 
@@ -424,13 +431,23 @@ Profile Page
 }
 
 .score {
-  float: left;
-  width: 100%;
+  //float: left;
+  width: 40%;
+  margin: 5%;
+  background: #666666;
+  border: #666666;
+  text-align: center;
+  //left: 25%;
+  min-width: 360px;
+
 }
 
 @media screen and (max-width: 790px) {
   .score {
     width: 50%;
+    //left: 50%;
+    //margin-left: 50%;
+    //margin-right: 50%;
   }
 }
 

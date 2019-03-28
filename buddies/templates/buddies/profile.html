@@ -3,107 +3,116 @@
 {% load static %}
 {% block content %}
     <div class="page-content">
-{#        <div>#}
-            <div class="profile-page">
-                <div class="wrapper">
-                    <div class="page-header page-header-small">
-                        <div class="page-header-image" data-parallax="true"></div>
-                        <div class="container">
-                            <div class="content-center">
-                                <div class="cc-profile-image"><a href="#"><img src="{{ user.image.url }}" alt="Image"/></a>
-                                </div>
-                                <div class="user-name">{{ user.first_name }}</div>
-                                <p class="category text-white city-info"><span class="user-data">City:</span> {{ user.city }}, <span class="user-data">Age:</span> {{ user.age }}</p>
+        {#        <div>#}
+        <div class="profile-page">
+            <div class="wrapper">
+                <div class="page-header page-header-small">
+                    <div class="page-header-image" data-parallax="true"></div>
+                    <div class="container">
+                        <div class="content-center">
+                            <div class="cc-profile-image"><a href="#"><img src="{{ user.image.url }}" alt="Image"/></a>
                             </div>
-                        </div>
-                    </div>
-
-                        {#    <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">#}
-                        {#        <h2>Hi {{ user.first_name }}!</h2>#}
-                        {#    </div>#}
-
-                        {% if user.is_authenticated %}
-
-
-                            {#                <h2>Hi {{ user.first_name }}!</h2>#}
-
-
-                            {#                <h3>User Profile</h3>#}
-                            {##}
-                            {#                <p>First Name: {{ user.first_name }}</p>#}
-                            {#                <p>Image:</p> <img class="prof-pic" src="{{ user.image.url }}">#}
-                            {#                <p>Username: {{ user.username }}</p>#}
-                            {#                <p>City: {{ user.city }}</p>#}
-                            {#                <p>Age: {{ user.age }}</p>#}
-
-                            <div class="row bottom-info justify-content-center">
-                            {% if user.buddy == None %}
-                                <p>Your buddy has not been assigned yet</p>
-
-                            {% else %}
-
-                                <div class="user-info col-sm-12 col-md-6">
-                                <h4 id="pair-announce">Your Pen Pal is: </h4>
-                                <div class="cc-profile-image">
-                                    <img class="prof-pic cc-" src="{{ user.buddy.image.url }}">
-                                </div>
-                                 <p class="user-name" id="buddy">{{ user.buddy.first_name }}</p>
-                                <p class="category text-white city-info"><span class="user-data">City:</span> {{ user.buddy.city }}, <span class="user-data">Age:</span> {{ user.buddy.age }}</p>
-
-                            {% endif %}
-                        </div>
-                            <br>
-                            {% if user.buddy == None %}
-                                <div class="score-wrapper-single">
-                                    <h4 class="score-heading">Here are some statistics about your hometown: </h4>
-
-                                    <a class="teleport-widget-link"
-                                       href="https://teleport.org/cities/{{ user.city }}/">{{ user.city }}</a>
-                                    <script async class="teleport-widget-script"
-                                            data-url="https://teleport.org/cities/{{ user.city }}/widget/scores/?currency=USD&citySwitcher=false"
-                                            data-max-width="770" data-height="958"
-                                            src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
-                                </div>
-                            {% else %}
-
-
-                                <div class="row score-wrapper-double">
-                                    <div class="col-6 score" id="score-1">
-                                        <h4 class="score-heading">Here's what it's like to live in your pen pal's
-                                            home:</h4>
-
-                                        <a class="teleport-widget-link"
-                                           href="https://teleport.org/cities/{{ user.buddy.city }}/">See More Details
-                                            About {{ user.buddy.city }}</a>
-                                        <script async class="teleport-widget-script"
-                                                data-url="https://teleport.org/cities/{{ user.buddy.city | lower }}/widget/scores/?currency=USD&citySwitcher=false"
-                                                data-max-width="770" data-height="958"
-                                                src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
-                                    </div>
-                                    <div class="col-6 score" id="score-2">
-                                        <h4 class="score-heading">Compared to what it's like in your hometown:</h4>
-
-                                        <a class="teleport-widget-link"
-                                           href="https://teleport.org/cities/{{ user.city }}/">See More Details
-                                            About {{ user.city }}</a>
-                                        <script async class="teleport-widget-script"
-                                                data-url="https://teleport.org/cities/{{ user.city | lower }}/widget/scores/?currency=USD&citySwitcher=false"
-                                                data-max-width="770" data-height="958"
-                                                src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                        {% else %}
-
-                            <h2>Please <a href="{% url 'users:login' %}">login</a>
-                                to see this page</h2>
-
-                        {% endif %}
+                            <div class="user-name">{{ user.first_name }}</div>
+                            <p class="category text-white city-info"><span
+                                    class="user-data">City:</span> {{ user.city }}, <span
+                                    class="user-data">Age:</span> {{ user.age }}</p>
                         </div>
                     </div>
                 </div>
+
+                {#    <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">#}
+                {#        <h2>Hi {{ user.first_name }}!</h2>#}
+                {#    </div>#}
+
+                {% if user.is_authenticated %}
+
+
+                    {#                <h2>Hi {{ user.first_name }}!</h2>#}
+
+
+                    {#                <h3>User Profile</h3>#}
+                    {##}
+                    {#                <p>First Name: {{ user.first_name }}</p>#}
+                    {#                <p>Image:</p> <img class="prof-pic" src="{{ user.image.url }}">#}
+                    {#                <p>Username: {{ user.username }}</p>#}
+                    {#                <p>City: {{ user.city }}</p>#}
+                    {#                <p>Age: {{ user.age }}</p>#}
+
+                    <div class="row bottom-info justify-content-center">
+                    {% if user.buddy == None %}
+                        <p>Your buddy has not been assigned yet</p>
+
+                    {% else %}
+
+                        <div class="user-info col-sm-12 col-md-6">
+                        <h4 id="pair-announce">Your Pen Pal is: </h4>
+                        <div class="cc-profile-image">
+                            <img class="prof-pic cc-" src="{{ user.buddy.image.url }}">
+                        </div>
+                        <p class="user-name" id="buddy">{{ user.buddy.first_name }}</p>
+                        <p class="category text-white city-info"><span
+                                class="user-data">City:</span> {{ user.buddy.city }}, <span
+                                class="user-data">Age:</span> {{ user.buddy.age }}</p>
+
+                    {% endif %}
+                </div>
+                    <br>
+                    {% if user.buddy == None %}
+                        <div class="score-wrapper-single">
+                            <h4 class="score-heading">Here are some statistics about your hometown: </h4>
+
+                            <a class="teleport-widget-link"
+                               href="https://teleport.org/cities/{{ user.city }}/">{{ user.city }}</a>
+                            <script async class="teleport-widget-script"
+                                    data-url="https://teleport.org/cities/{{ user.city }}/widget/scores/?currency=USD&citySwitcher=false"
+                                    data-max-width="770" data-height="958"
+                                    src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
+                        </div>
+                    {% else %}
+
+<div class="container">
+                                                        <div class="row score-wrapper-double">
+{#                        <div class="col-6 score" id="score-1">#}
+                            <div class="card score">
+                                <h4 class="score-heading">Here's what it's like to live in your pen pal's
+                                    home:</h4>
+
+                                <a class="teleport-widget-link"
+                                   href="https://teleport.org/cities/{{ user.buddy.city }}/">See More Details
+                                    About {{ user.buddy.city }}</a>
+                                <script async class="teleport-widget-script"
+                                        data-url="https://teleport.org/cities/{{ user.buddy.city | lower }}/widget/scores/?currency=USD&citySwitcher=false"
+                                        data-max-width="770" data-height="958"
+                                        src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
+                            </div>
+{#                        </div>#}
+{#                        <div class="col-6 score" id="score-2">#}
+                            <div class="card score">
+                                <h4 class="score-heading">Compared to what it's like in your hometown:</h4>
+
+                                <a class="teleport-widget-link"
+                                   href="https://teleport.org/cities/{{ user.city }}/">See More Details
+                                    About {{ user.city }}</a>
+                                <script async class="teleport-widget-script"
+                                        data-url="https://teleport.org/cities/{{ user.city | lower }}/widget/scores/?currency=USD&citySwitcher=false"
+                                        data-max-width="770" data-height="958"
+                                        src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
+                            </div>
+{#                        </div>#}
+                                                        </div>
+                        </div>
+                    {% endif %}
+
+                {% else %}
+
+                    <h2>Please <a href="{% url 'users:login' %}">login</a>
+                        to see this page</h2>
+
+                {% endif %}
+                </div>
             </div>
-{#        </div>#}
+        </div>
+    </div>
+    {#        </div>#}
     </div>
 {% endblock content %}
