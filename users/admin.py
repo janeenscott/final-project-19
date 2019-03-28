@@ -22,7 +22,7 @@ def pair_buddies(self, request, queryset):
         ).filter(
             Q(rating__gt=user.rating + 5) | Q(rating__lt=user.rating - 5)
         ).filter(
-            Q(age__gt=int(user.age) - 2) & Q(age__lt=int(user.age) + 2)
+            Q(age__gt=int(user.age) - 1) & Q(age__lt=int(user.age) + 1)
         ).order_by("?").first()
 
         if buddy is None:

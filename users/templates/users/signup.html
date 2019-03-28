@@ -1,78 +1,23 @@
-
 {% extends 'buddies/base.html' %}
 
 {% block title %}Sign Up!{% endblock title %}
 
 {% block content %}
+    <div class="credentials-wrapper">
+        <h2>Sign Up!</h2>
+        <form enctype="multipart/form-data" id="signup-form" method="post" action={% url 'users:signup' %}>
+            {% csrf_token %}
 
-    <h2>Sign Up!</h2>
-    <form enctype="multipart/form-data" id="signup-form" method="post" action={% url 'users:signup' %}>
-    {% csrf_token %}
-
-        {{ form.as_p }}
-
-{##}
-{#         <table>#}
-{#        <tr>#}
-{#            <td>First Name</td>#}
-{#            <td><input name="first_name"/></td>#}
-{#        </tr>#}
-{#        <tr>#}
-{#            <td>Username</td>#}
-{#            <td><input name="username"/></td>#}
-{#        </tr>#}
-{#        <tr>#}
-{#            <td>Password</td>#}
-{#            <td><input type="password" name="password"></td>#}
-{#        </tr>#}
-{##}
-{#        <tr>#}
-{#            <td>Password Again</td>#}
-{#            <td><input type="password" name="password2"></td>#}
-{#        </tr>#}
-{#              <tr>#}
-{#            <td>Email</td>#}
-{#            <td><input name="email"/></td>#}
-{#        </tr>#}
-{#        <tr>#}
-{#            <td>City</td>#}
-{#            <td><select id="city-select" name="city">Your City#}
-{##}
-{#            <option value="asheville">Asheville</option>#}
-{#            <option value="atlanta">Atlanta</option>#}
-{#            <option value="birmingham_al">Birmingham</option>#}
-{#            <option value="boise">Boise</option>#}
-{#            <option value="charlotte">Charlotte</option>#}
-{#            <option value="charleston">Charleston</option>#}
-{#            <option value="chicago">Chicago</option>#}
-{#            <option value="miami">Miami</option>#}
-{#            <option value="minn-st-paul">Minneapolis</option>#}
-{#            <option value="new-york">New York</option>#}
-{#            <option value="omaha">Omaha</option>#}
-{#            <option value="tampa-bay">Tampa Bay</option>#}
-{##}
-{##}
-{#            </select></td>#}
-{#            <td><input name="city"/></td>#}
-{#        </tr>#}
-{#        <tr>#}
-{#            <td>Age</td>#}
-{#            <td><input name="age"></td>#}
-{#        </tr>#}
-{##}
-{#        <tr>#}
-{#            <td>Profile Picture</td>#}
-{#            <td><input id='profile-pic' type="file" name="image"></td>#}
-{#        </tr>#}
-{#        </table>#}
-
-        <input type="submit" value="Signup">
+            {{ form.as_p }}
 
 
-    </form>
+            <input type="submit" value="Signup">
 
 
-    <p><a href="{% url 'users:login' %}">Already Have an Account? Login.</a></p>
+        </form>
 
+
+        <p class="login-link"><a href="{% url 'users:login' %}">Already Have an Account? Login.</a></p>
+    </div>
 {% endblock content %}
 
