@@ -157,24 +157,24 @@ class App extends Component {
         return (
             <div className="App">
                 <div className="app-wrapper">
-                <form action="../profile">
-                    <button className="btn-redirect">
-                        Go Back to Profile
-                    </button>
-                </form>
-                <h1>Messenger</h1>
+                    <form action="../profile">
+                        <button className="btn-redirect">
+                            Go Back to Profile
+                        </button>
+                    </form>
+                    <h1>Messenger</h1>
 
-                {isEditing ? (
-                    <UpdateMessage updateMessage={this.updateMessage} message={this.state.isEditing}/>
-                ) : (
-                    <div className='is-editing-false'>
-                        <ChatMessages messages={this.state.messages} deleteMessage={this.deleteMessage}
-                                      handleEdit={this.handleEdit}/>
-                        <ChatInput sendMessage={this.sendMessage}/>
-                    </div>
-                )
-                }
-                {/*<Button onClick={location.href='buddies:profile'}/>*/}
+                    {isEditing ? (
+                        <UpdateMessage updateMessage={this.updateMessage} message={this.state.isEditing}/>
+                    ) : (
+                        <div className='is-editing-false'>
+                            <ChatMessages messages={this.state.messages} deleteMessage={this.deleteMessage}
+                                          handleEdit={this.handleEdit}/>
+                            <ChatInput sendMessage={this.sendMessage}/>
+                        </div>
+                    )
+                    }
+                    {/*<Button onClick={location.href='buddies:profile'}/>*/}
 
                 </div>
             </div>

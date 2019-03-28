@@ -58,42 +58,42 @@ class ChatMessages extends Component {
     render() {
 
         return (
-                <div>
-                    {this.props.messages.map(message => {
-                        const dateToFormat = message['time_sent'];
-                        return (
+            <div>
+                {this.props.messages.map(message => {
+                    const dateToFormat = message['time_sent'];
+                    return (
 
-                                <Listgroup className="message" key={message.id}>
-                                    <Listgroup.Item>
-                                        {message.sender['first_name']}
-                                    </Listgroup.Item>
-                                    <Listgroup.Item
-                                        dangerouslySetInnerHTML={{__html: this.convertMessageFromJSONToText(message['message_text'])}}>
-                                    </Listgroup.Item>
-                                    <Listgroup.Item>
-                                        <Moment format="MMMM Do YYYY, h:mm a">
-                                            {dateToFormat}
-                                        </Moment>
-                                    </Listgroup.Item>
+                        <Listgroup className="message" key={message.id}>
+                            <Listgroup.Item>
+                                {message.sender['first_name']}
+                            </Listgroup.Item>
+                            <Listgroup.Item
+                                dangerouslySetInnerHTML={{__html: this.convertMessageFromJSONToText(message['message_text'])}}>
+                            </Listgroup.Item>
+                            <Listgroup.Item>
+                                <Moment format="MMMM Do YYYY, h:mm a">
+                                    {dateToFormat}
+                                </Moment>
+                            </Listgroup.Item>
 
-                                    {(message.sender.id !== window.userId) ? (
-                                        <Listgroup.Item className="unauthorized">
-                                            <p className='edit' onClick={() => this.props.handleEdit(message)}>&#9998;</p>
-                                            <p className='delete' onClick={() => this.props.deleteMessage(message)}>&#x2718;</p>
-                                        </Listgroup.Item>
-                                    ): (
-                                        null
-                                    )}
-                                    <br/>
-                                </Listgroup>
+                            {(message.sender.id === window.userId) ? (
+                                <Listgroup.Item className="unauthorized">
+                                    <p className='edit' onClick={() => this.props.handleEdit(message)}>&#9998;</p>
+                                    <p className='delete' onClick={() => this.props.deleteMessage(message)}>&#x2718;</p>
+                                </Listgroup.Item>
+                            ) : (
+                                null
+                            )}
+                            <br/>
+                        </Listgroup>
 
 
-                        )
-                    })
-                    }
-                     </div>
-                )
+                    )
+                })
                 }
-                }
+            </div>
+        )
+    }
+}
 
-                export default ChatMessages;
+export default ChatMessages;

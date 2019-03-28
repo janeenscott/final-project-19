@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import '../container/App.css';
-import { EditorState, convertFromRaw, convertToRaw } from 'draft-js';
+import {EditorState, convertFromRaw, convertToRaw} from 'draft-js';
 import {Editor} from 'react-draft-wysiwyg'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 
-class ChatInput extends Component{
-    constructor(props){
+class ChatInput extends Component {
+    constructor(props) {
         super(props);
         this.state = {
             messageText: '',
@@ -30,7 +30,7 @@ class ChatInput extends Component{
         });
     };
 
-    handleSubmit(event){
+    handleSubmit(event) {
         event.preventDefault();
         convertToRaw(this.state.editorState.getCurrentContent());
         console.log('send message', this.state.editorState);
@@ -43,26 +43,26 @@ class ChatInput extends Component{
     }
 
     render() {
-        return(
-         <form
-             className='message-input-form'
-             onSubmit={this.handleSubmit}
-         >
+        return (
+            <form
+                className='message-input-form'
+                onSubmit={this.handleSubmit}
+            >
 
-             <div className='editor'>
-               <Editor
-                editorState={this.state.editorState}
-                toolbarClassName="toolbarClassName"
-                wrapperClassName="wrapperClassName"
-                editorClassName="editorClassName"
-                onEditorStateChange={this.onEditorStateChange}
-            />
-            </div>
-              <button type="submit" className="btn btn-send">
-                        Send
-                    </button>
+                <div className='editor'>
+                    <Editor
+                        editorState={this.state.editorState}
+                        toolbarClassName="toolbarClassName"
+                        wrapperClassName="wrapperClassName"
+                        editorClassName="editorClassName"
+                        onEditorStateChange={this.onEditorStateChange}
+                    />
+                </div>
+                <button type="submit" className="btn btn-send">
+                    Send
+                </button>
 
-         </form>
+            </form>
         )
     }
 }
