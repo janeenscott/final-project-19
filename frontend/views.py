@@ -7,9 +7,18 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class ChatView(LoginRequiredMixin, View):
     def get(self, request):
+        print('chat')
+        user = self.request.user
+        print(user)
+
         try:
             with open(os.path.join(settings.REACT_APP_DIR, 'build', 'index.html')) as f:
-                return HttpResponse(f.read())
+
+                html = f.read()
+                html = html.replace('{{ request.user.pk }}', str(user.pk))
+
+                return HttpResponse(html)
+
         except FileNotFoundError:
             return HttpResponse(status=501)
 

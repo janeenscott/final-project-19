@@ -28,6 +28,10 @@
     <title>Send a Message</title>
   </head>
   <body>
+    <script>
+        window.userId = {{ request.user.pk }};
+    </script>
+
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
