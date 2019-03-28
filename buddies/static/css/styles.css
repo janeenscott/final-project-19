@@ -68,6 +68,7 @@ body h4 {
 .nav {
   display: inline;
   color: #00CDFF;
+  margin: 3px;
 }
 
 /*--------------------------------------------------------------
@@ -376,6 +377,23 @@ Profile Page
 .main {
   position: relative;
   background: #FFFFFF;
+}
+
+/*-------------------------
+About Page
+---------------------------*/
+.about-wrapper {
+  position: absolute;
+}
+
+.about {
+  font-size: 120px;
+  margin: 60px;
+  position: relative;
+}
+
+#mission {
+  margin-bottom: 50px;
 }
 
 /*# sourceMappingURL=styles.css.map */

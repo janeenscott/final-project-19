@@ -93,6 +93,7 @@ body {
   display: inline;
   color: #00CDFF;
   //float: right;
+  margin: 3px;
 }
 
 
@@ -238,7 +239,8 @@ body {
   border: #c7ffff;
   margin: 50px;
 }
-.mission{
+
+.mission {
   margin-left: 10%;
   margin-right: 10%;
   text-align: center;
@@ -458,4 +460,27 @@ Profile Page
 .main {
   position: relative;
   background: #FFFFFF;
+}
+
+
+/*-------------------------
+About Page
+---------------------------*/
+
+#about-header {
+  //max-height: 300px;
+}
+
+.about-wrapper{
+  position: absolute;
+}
+
+.about {
+  font-size: 120px;
+  margin: 60px;
+  position: relative;
+}
+
+#mission{
+  margin-bottom: 50px;
 }

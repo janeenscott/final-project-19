@@ -11,5 +11,7 @@ class ProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'buddies/profile.html'
 
 
-# class ChatView(LoginRequiredMixin, TemplateView):
-#     template_name = 'buddies/chat.html'
+class AboutView(LoginRequiredMixin, TemplateView):
+    template_name = 'buddies/about.html'
+
+
